@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Autoshop.Web</title>
+    <title>@ViewData["Title"] - Paco's Garage</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -15,34 +15,124 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/slider.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
+    <script type="text/javascript" src="js/move-top.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
+    <script type="text/javascript" async="async" defer="defer" data-cfasync="false" src="https://mylivechat.com/chatinline.aspx?hccid=31644956"></script>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Autoshop.Web</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-                @await Html.PartialAsync("_LoginPartial")
+    <div class="header">
+        <div class="header_top">
+            <div class="wrap">
+                <div class="logo">
+                    <a asp-area="" asp-controller="Home" asp-action="Index"><img src="images/logo.png" alt="" /></a>
+                </div>
+                <div class="dail">
+                    <h4>Call Us Now</h4>
+                    <p><img src="~/images/icons/mobile.png"><a href="tel:0886808571">0886 808 571</a></p>
+                    <p><a href='javascript:void(0)' onclick='MyLiveChat_OpenDialog()'><img src="~/images/icons/chat.png">Live Chat</a></p>
+                </div>
+                <div class="clear"></div>
             </div>
         </div>
-    </nav>
-    <div class="container body-content">
+        <div class="header-bottom">
+            <div class="wrap">
+                <div class="menu">
+                    <ul>
+                        <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a asp-area="" asp-controller="" asp-action="">About</a></li>
+                        <li><a asp-area="" asp-controller="" asp-action="">Services</a></li>
+                        <li><a asp-area="" asp-controller="" asp-action="">Blog</a></li>
+                        <li><a asp-area="" asp-controller="" asp-action="">Contact</a></li>
+                        <div class="clear"></div>
+                    </ul>
+                </div>
+                <div class="social-icons">
+                    <ul>
+                        <li><a class="facebook" href="https://www.facebook.com/pavel.ilchev" target="_blank"> </a></li>
+                        <li><a class="twitter" href="https://twitter.com/PacosGarage" target="_blank"></a></li>
+                        <li><a class="googleplus" href="https://plus.google.com/u/2/102737260430634775032" target="_blank"></a></li>
+                        <div class="clear"></div>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid no-padding">
         @RenderBody()
-        <hr />
+    </div>
+
+    <div class="footer">
+        <div class="wrap">
+            <div class="footer_grides container">
+                <div class="section group row">
+                    <div class="col-md-3 span_1_of_4">
+                        <h3>Latest Tweets</h3>
+                        <div class="post">
+                            <p><span><a href="#">Tuesday,June 31th,2013</a></span></p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,Ut enim ad minim veniam sed do <span><a href="#">[...]</a></span></p>
+                        </div>
+                        <div class="post">
+                            <p><span><a href="#">Monday,May 21th,2013</a></span></p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,Ut enim ad minim veniam sed do<span><a href="#">[...]</a></span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 span_1_of_4">
+                        <h3>Connect With Us</h3>
+                        <div class="social_icons">
+                            <ul>
+                                <li>
+                                    <a href="#" class="facebook">
+                                        <span class="icon"> &nbsp;</span> <span class="inner"><strong>Facebook</strong> <br>+ 12, 297</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="twitter">
+                                        <span class="icon"> &nbsp;</span> <span class="inner"><strong>Twitter</strong> <br>+ 5, 287</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="rss">
+                                        <span class="icon"> &nbsp;</span> <span class="inner"><strong>Rss</strong> <br>+ 77, 287</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 span_1_of_4">
+                        <h3>Navigate</h3>
+                        <ul>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li><a asp-area="" asp-controller="" asp-action="">About</a></li>
+                            <li><a asp-area="" asp-controller="" asp-action="">Services</a></li>
+                            <li><a asp-area="" asp-controller="" asp-action="">Blog</a></li>
+                            <li><a asp-area="" asp-controller="" asp-action="">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 span_1_of_4">
+                        <h3>Location</h3>
+                        <ul>
+                            <li>Neque porro quisquam,</li>
+                            <li>dolor sit amet,</li>
+                            <li> American Canyon USA.</li>
+                            <li><span>Telephone :</span> +00 000 00000</li>
+                            <li><span>Fax :</span> +00 000 00000</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         <footer>
-            <p>&copy; 2017 - Autoshop.Web</p>
+            <div class="copy_right">
+                <div class="wrap">
+                    <p>Powered by <b>Paco</b>&copy; &ndash; Paco's Garage</p>
+                </div>
+            </div>
         </footer>
     </div>
 
