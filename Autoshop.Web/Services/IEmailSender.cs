@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Autoshop.Web.Services
+﻿namespace Autoshop.Web.Services
 {
+    using System.Threading.Tasks;
+
     public interface IEmailSender
     {
-        Task SendEmailAsync(string email, string subject, string message);
+        Task<bool> SendEmailAsync(string email, string subject, string message);
     }
 }

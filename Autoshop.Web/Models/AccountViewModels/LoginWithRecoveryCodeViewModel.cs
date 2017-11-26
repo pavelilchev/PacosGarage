@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Autoshop.Web.Models.AccountViewModels
+﻿namespace Autoshop.Web.Models.AccountViewModels
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class LoginWithRecoveryCodeViewModel
     {
             [Required]

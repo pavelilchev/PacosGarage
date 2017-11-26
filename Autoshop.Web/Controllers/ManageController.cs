@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Autoshop.Web.Models;
-using Autoshop.Web.Models.ManageViewModels;
-using Autoshop.Web.Services;
-
-namespace Autoshop.Web.Controllers
+﻿namespace Autoshop.Web.Controllers
 {
+    using System;
+    using System.Linq;
+    using System.Text;
+    using System.Text.Encodings.Web;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Authentication;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+    using Autoshop.Web.Models;
+    using Autoshop.Web.Models.ManageViewModels;
+    using Autoshop.Web.Services;
+
     [Authorize]
     [Route("[controller]/[action]")]
     public class ManageController : Controller

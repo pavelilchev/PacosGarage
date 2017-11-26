@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Autoshop.Web.Models;
-using Autoshop.Web.Models.AccountViewModels;
-using Autoshop.Web.Services;
-
-namespace Autoshop.Web.Controllers
+﻿namespace Autoshop.Web.Controllers
 {
+    using System;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Authentication;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+    using Autoshop.Web.Models;
+    using Autoshop.Web.Models.AccountViewModels;
+    using Autoshop.Web.Services;
+
     [Authorize]
     [Route("[controller]/[action]")]
     public class AccountController : Controller

@@ -1,17 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Autoshop.Web.Services
+﻿namespace Autoshop.Web.Services
 {
-    // This class is used by the application to send email for account confirmation and password reset.
-    // For more details see https://go.microsoft.com/fwlink/?LinkID=532713
+    using Microsoft.Extensions.Configuration;
+    using System;
+    using System.Net;
+    using System.Net.Mail;
+    using System.Threading.Tasks;
+
     public class EmailSender : IEmailSender
     {
-        public Task SendEmailAsync(string email, string subject, string message)
+        private readonly IConfiguration configuration;
+
+        public EmailSender(IConfiguration configuration)
         {
-            return Task.CompletedTask;
+            this.configuration = configuration;
+        }
+
+        public async Task<bool> SendEmailAsync(string email, string subject, string message)
+        {
+            try
+            {
+                MailMessage mailMessage = new MailMessage();
+                mailMessage.From = new MailAddress(email);
+                mailMessage.To.Add(this.configuration["EmailConfiguration:Username"]);
+                mailMessage.ReplyToList.Add(new MailAddress(email));
+                mailMessage.Body = message;
+                mailMessage.Subject = subject;
+
+                using (SmtpClient client = new SmtpClient(
+                    this.configuration["EmailConfiguration:SMTPServer"], 
+                    int.Parse(this.configuration["EmailConfiguration:Port"])))
+                {
+                    client.EnableSsl = true;
+                    client.UseDefaultCredentials = false;
+                    client.Credentials = new NetworkCredential(
+                        this.configuration["EmailConfiguration:Username"], 
+                        this.configuration["EmailConfiguration:Password"]);
+
+                    await client.SendMailAsync(mailMessage);
+
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

@@ -9,6 +9,7 @@
     using Autoshop.Data;
     using Autoshop.Web.Models;
     using Autoshop.Web.Services;
+    using Autoshop.Web.Extensions;
 
     public class Startup
     {
@@ -30,11 +31,18 @@
 
             services.AddTransient<IEmailSender, EmailSender>();
 
+            services.AddRouting(options =>
+            {
+                options.LowercaseUrls = true;
+            });
+
             services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseDatabaseMigrate();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -43,7 +51,7 @@
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/home/error");
             }
 
             app.UseStaticFiles();
