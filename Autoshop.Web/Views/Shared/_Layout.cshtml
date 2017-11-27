@@ -15,55 +15,82 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link rel="stylesheet" href="css/slider.css" type="text/css" media="screen" />
-    <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
-    <script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
-    <script type="text/javascript" src="js/move-top.js"></script>
-    <script type="text/javascript" src="js/easing.js"></script>
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/css/slider.css"  rel="stylesheet"  type="text/css" media="screen" />
+    <script type="text/javascript" src="~/js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery.nivo.slider.js"></script>
+    <script type="text/javascript" src="~/js/move-top.js"></script>
+    <script type="text/javascript" src="~/js/easing.js"></script>
     <script type="text/javascript" async="async" defer="defer" data-cfasync="false" src="https://mylivechat.com/chatinline.aspx?hccid=31644956"></script>
 </head>
 <body>
     <div class="header">
         <div class="header_top">
-            <div class="wrap">
-                <div class="logo">
-                    <a asp-area="" asp-controller="Home" asp-action="Index"><img src="images/logo.png" alt="" /></a>
+            <div class="wrap container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="logo">
+                            <a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/logo.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="social-icons">
+                            <ul>
+                                <li><a class="facebook" href="https://www.facebook.com/pavel.ilchev" target="_blank"> </a></li>
+                                <li><a class="twitter" href="https://twitter.com/PacosGarage" target="_blank"></a></li>
+                                <li><a class="googleplus" href="https://plus.google.com/u/2/102737260430634775032" target="_blank"></a></li>
+                                <div class="clear"></div>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="dail">
+                            <h4>Call Us Now</h4>
+                            <p><img src="~/images/icons/mobile.png"><a href="tel:0886808571">0886 808 571</a></p>
+                            <p><a href='javascript:void(0)' onclick='MyLiveChat_OpenDialog()'><img src="~/images/icons/chat.png">Live Chat</a></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="dail">
-                    <h4>Call Us Now</h4>
-                    <p><img src="~/images/icons/mobile.png"><a href="tel:0886808571">0886 808 571</a></p>
-                    <p><a href='javascript:void(0)' onclick='MyLiveChat_OpenDialog()'><img src="~/images/icons/chat.png">Live Chat</a></p>
-                </div>
-                <div class="clear"></div>
             </div>
         </div>
-        <div class="header-bottom">
-            <div class="wrap">
-                <div class="menu">
-                    <ul>
+
+        <nav class="navbar navbar-default header-bottom">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
                         <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                         <li><a asp-area="" asp-controller="" asp-action="">About</a></li>
                         <li><a asp-area="" asp-controller="" asp-action="">Services</a></li>
                         <li><a asp-area="" asp-controller="" asp-action="">Blog</a></li>
                         <li><a asp-area="" asp-controller="" asp-action="">Contact</a></li>
-                        <div class="clear"></div>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
                     </ul>
                 </div>
-                <div class="social-icons">
-                    <ul>
-                        <li><a class="facebook" href="https://www.facebook.com/pavel.ilchev" target="_blank"> </a></li>
-                        <li><a class="twitter" href="https://twitter.com/PacosGarage" target="_blank"></a></li>
-                        <li><a class="googleplus" href="https://plus.google.com/u/2/102737260430634775032" target="_blank"></a></li>
-                        <div class="clear"></div>
-                    </ul>
-                </div>
-                <div class="clear"></div>
             </div>
-        </div>
+        </nav>
     </div>
 
-    <div class="container-fluid no-padding">
+    @RenderSection("Slideshow", required: false)
+
+    <div class="container">
         @RenderBody()
     </div>
 
