@@ -642,7 +642,7 @@
         pauseTime: 3000,
         startSlide: 0,
         directionNav: true,
-        controlNav: true,
+        controlNav: false,
         controlNavThumbs: false,
         pauseOnHover: true,
         manualAdvance: false,

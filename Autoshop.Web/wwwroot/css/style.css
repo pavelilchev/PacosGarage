@@ -1126,6 +1126,10 @@ body {
     transition: all 0.5s ease-in-out;
 }
 
+.navbar-default .navbar-nav > li:last-child > a {
+    border-right: none;
+}
+
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
@@ -1137,6 +1141,20 @@ body {
 .navbar-default .navbar-nav > li > a:focus {
     background: #00A1DA;
     color: #FFF;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    background: #00A1DA;
+    color: #FFF;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+    background: #00A1DA;
+    color: #FFF;
+    text-decoration: none;
 }
 
 /***** 404 ****/
