@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Autoshop.Common\Autoshop.Common.csproj" />
     <ProjectReference Include="..\Autoshop.Data\Autoshop.Data.csproj" />
   </ItemGroup>
 

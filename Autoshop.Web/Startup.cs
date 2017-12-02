@@ -10,6 +10,9 @@
     using Autoshop.Web.Models;
     using Autoshop.Web.Services;
     using Autoshop.Web.Extensions;
+    using Microsoft.AspNetCore.Mvc;
+
+    using static Autoshop.Common.ValidationConstants;
 
     public class Startup
     {
@@ -25,18 +28,29 @@
             services.AddDbContext<AutoshopDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<User, IdentityRole>()
+            services.AddIdentity<User, IdentityRole>(options =>
+                {
+                    options.Password.RequireDigit = false;
+                    options.Password.RequiredLength = UserPasswordMinLength;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequiredUniqueChars = 0;
+                })
                 .AddEntityFrameworkStores<AutoshopDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddRouting(options =>
-            {
-                options.LowercaseUrls = true;
-            });
+                {
+                    options.LowercaseUrls = true;
+                });
 
-            services.AddMvc();
+            services.AddMvc(options =>
+                {
+                    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+                });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

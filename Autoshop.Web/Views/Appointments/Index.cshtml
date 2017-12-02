@@ -1,0 +1,99 @@
+﻿@model AppointmentViewModel
+
+@{
+    ViewData["Title"] = "Make an appointment";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-lg-8 col-md-10">
+        <div class="form appointments">
+            <form method="post">
+                <div class="form-section-header"><span class="number">1</span>PERSONAL INFORMATION</div>
+                <div class="form-group">
+                    <label asp-for="FirstName"></label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Phone"></label>
+                    <input asp-for="Phone" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                <div class="form-section-header"><span class="number">2</span>VEHICLE INFORMATION</div>
+                <div class="form-group">
+                    <input asp-for="VehicleInformation" class="form-control" placeholder="Make, Model, Year" />
+                    <span asp-validation-for="VehicleInformation" class="text-danger"></span>
+                </div>
+                <div class="form-section-header"><span class="number">3</span>PLEASE TELL US YOUR REASON FOR SCHEDULING AN APPOINTMENT</div>
+                <div class="form-group">
+                    <textarea asp-for="Reason" class="form-control" rows="5"></textarea>
+                    <span asp-validation-for="VehicleInformation" class="text-danger"></span>
+                </div>
+                <div class="form-section-header"><span class="number">4</span>SPECIALS</div>
+                <div class="form-group">
+                    <select asp-for="SpecialId" class="form-control">
+                        <option value="">Select Special</option>
+                    </select>
+                    <span asp-validation-for="SpecialId" class="text-danger"></span>
+                </div>
+
+                <div class="form-section-header"><span class="number">5</span>CHOOSE DATE AND TIME</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Date"></label>
+                            <input asp-for="Date" class="form-control" id="appointmentDate" placeholder="MM/DD/YYYY" type="text" readonly />
+                            <span asp-validation-for="Date" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Time"></label>
+                            <select asp-for="Time" class="form-control">
+                                <option value="">Select time</option>
+                                <option value="08:00">08:00 HH</option>
+                                <option value="09:00">09:00 HH</option>
+                                <option value="10:00">10:00 HH</option>
+                                <option value="11:00">11:00 HH</option>
+                                <option value="12:00">12:00 HH</option>
+                                <option value="13:00">13:00 HH</option>
+                                <option value="14:00">14:00 HH</option>
+                                <option value="15:00">15:00 HH</option>
+                                <option value="16:00">16:00 HH</option>
+                            </select>
+                            <span asp-validation-for="Time" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+        <div class="alert alert-info text-center">
+            <p>
+                Please note that the <b>date and time</b> you requested may not be available.<br />
+                We will contact you to confirm your actual appointment details.
+            </p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+}
+
+
