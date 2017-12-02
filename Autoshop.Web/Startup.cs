@@ -1,16 +1,16 @@
 ﻿namespace Autoshop.Web
 {
+    using Autoshop.Data;
+    using Autoshop.Models;
+    using Autoshop.Web.Extensions;
+    using Autoshop.Web.Services;
     using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.EntityFrameworkCore;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Autoshop.Data;
-    using Autoshop.Web.Models;
-    using Autoshop.Web.Services;
-    using Autoshop.Web.Extensions;
-    using Microsoft.AspNetCore.Mvc;
 
     using static Autoshop.Common.ValidationConstants;
 
@@ -55,7 +55,7 @@
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseDatabaseMigrate();
+            app.UseDatabaseMigrate(Configuration);
 
             if (env.IsDevelopment())
             {

@@ -8,9 +8,9 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
-    using Autoshop.Web.Models;
     using Autoshop.Web.Models.AccountViewModels;
     using Autoshop.Web.Services;
+    using Autoshop.Models;
 
     [Authorize]
     [Route("[controller]/[action]")]

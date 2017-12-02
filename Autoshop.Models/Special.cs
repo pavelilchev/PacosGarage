@@ -10,8 +10,8 @@
         public int Id { get; set; }
 
         [Required]
-        [MinLength(SpecialDescriptionMinLength)]
-        [MaxLength(SpecialDescriptionMaxLength)]
+        [MinLength(SpecialDescriptionMinLength, ErrorMessage = MinLengthErrorMessgae)]
+        [MaxLength(SpecialDescriptionMaxLength, ErrorMessage = MaxLengthErrorMessgae)]
         public string Description { get; set; }
 
         public DateTime CreatedOn { get; set; }

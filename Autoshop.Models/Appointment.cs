@@ -9,16 +9,14 @@
     {
         public int Id { get; set; }
 
-        public string UserId { get; set; }
-
         [Required]
-        [MinLength(FirstNameMinLength, ErrorMessage = FirstNameMinLengthErrorMessgae)]
-        [MaxLength(FirstNameMaxLength, ErrorMessage = FirstNameMaxLengthErrorMessgae)]
+        [MinLength(FirstNameMinLength, ErrorMessage = MinLengthErrorMessgae)]
+        [MaxLength(FirstNameMaxLength, ErrorMessage = MaxLengthErrorMessgae)]
         public string FirstName { get; set; }
 
         [Required]
-        [MinLength(LastNameMinLength, ErrorMessage = LastNameMinLengthErrorMessgae)]
-        [MaxLength(LastNameMaxLength, ErrorMessage = LastNameMaxLengthErrorMessgae)]
+        [MinLength(LastNameMinLength, ErrorMessage = MinLengthErrorMessgae)]
+        [MaxLength(LastNameMaxLength, ErrorMessage = MaxLengthErrorMessgae)]
         public string LastName { get; set; }
 
         [Required]
@@ -36,6 +34,10 @@
         public int? SpecialId { get; set; }
 
         public Special Special { get; set; }
+
+        public string UserId { get; set; }
+
+        public User User { get; set; }
 
         [Required]
         [DataType(DataType.DateTime, ErrorMessage = DateErrorMessage)]
