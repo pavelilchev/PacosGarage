@@ -7,6 +7,7 @@
 
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" PrivateAssets="All" />
   </ItemGroup>
@@ -20,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Autoshop.Common\Autoshop.Common.csproj" />
     <ProjectReference Include="..\Autoshop.Data\Autoshop.Data.csproj" />
+    <ProjectReference Include="..\Autoshop.Services\Autoshop.Services.csproj" />
   </ItemGroup>
 
 </Project>

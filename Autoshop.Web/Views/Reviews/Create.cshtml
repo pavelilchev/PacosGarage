@@ -1,0 +1,71 @@
+﻿@model ReviewCreateViewModel
+
+@{
+    ViewData["Title"] = "Lieve a Review";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="form">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="FirstName"></label>
+                    <input asp-for="FirstName" class="form-control" readonly />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="LastName"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger" readonly></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" readonly />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Rating"></label>
+            <div class="radiobutton-list">
+                <div class="radiobutton">
+                    <label for="rating1" class="radio-inline">1</label>
+                    <input asp-for="Rating" value="1" type="radio" id="rating1">
+                </div>
+                <div class="radiobutton">
+                    <label for="rating2" class="radio-inline">2</label>
+                    <input asp-for="Rating" value="2" type="radio" id="rating2">
+                </div>
+                <div class="radiobutton">
+                    <label for="rating3" class="radio-inline">3</label>
+                    <input asp-for="Rating" value="3" type="radio" id="rating3">
+                </div>
+                <div class="radiobutton">
+                    <label for="rating4" class="radio-inline">4</label>
+                    <input asp-for="Rating" value="4" type="radio" id="rating4">
+                </div>
+                <div class="radiobutton">
+                    <label for="rating5" class="radio-inline">5</label>
+                    <input asp-for="Rating" value="5" type="radio" id="rating5">
+                </div>
+            </div>
+            <span asp-validation-for="Rating" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Text"></label>
+            <textarea asp-for="Text" class="form-control" placeholder="Your text here..." rows="10"></textarea>
+            <span asp-validation-for="Text" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+

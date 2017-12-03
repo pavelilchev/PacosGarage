@@ -1,4 +1,4 @@
-﻿namespace Autoshop.Web.Services
+﻿namespace Autoshop.Services.Implementations
 {
     using Microsoft.Extensions.Configuration;
     using System.Net;

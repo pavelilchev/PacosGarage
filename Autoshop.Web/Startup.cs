@@ -1,9 +1,12 @@
 ﻿namespace Autoshop.Web
 {
+    using AutoMapper;
+    using Autoshop.Common.Mapping;
     using Autoshop.Data;
     using Autoshop.Models;
+    using Autoshop.Services;
+    using Autoshop.Services.Implementations;
     using Autoshop.Web.Extensions;
-    using Autoshop.Web.Services;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
@@ -11,7 +14,6 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-
     using static Autoshop.Common.ValidationConstants;
 
     public class Startup
@@ -35,12 +37,14 @@
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequireUppercase = false;
                     options.Password.RequireLowercase = false;
-                    options.Password.RequiredUniqueChars = 0;
                 })
                 .AddEntityFrameworkStores<AutoshopDbContext>()
                 .AddDefaultTokenProviders();
 
+            Mapper.Initialize(cfg => cfg.AddProfile<AutoMapperProfile>());
+
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IReviewsService, ReviewsService>();
 
             services.AddRouting(options =>
                 {

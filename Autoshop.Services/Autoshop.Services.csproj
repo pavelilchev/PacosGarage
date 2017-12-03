@@ -4,4 +4,14 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Autoshop.Common\Autoshop.Common.csproj" />
+    <ProjectReference Include="..\Autoshop.Data\Autoshop.Data.csproj" />
+  </ItemGroup>
+
 </Project>

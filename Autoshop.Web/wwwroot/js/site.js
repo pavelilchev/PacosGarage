@@ -1,5 +1,7 @@
 ﻿$(function () {
-    $("#appointmentDate").datepicker({
-        minDate: new Date()
-    });
+    if ($("#appointmentDate").datepicker) {
+        $("#appointmentDate").datepicker({
+            minDate: new Date()
+        });
+    }
 });

@@ -16,6 +16,8 @@
 
         public const string PhoneNumberErrorMessage = "Invalid phone number, should be 10 digit";
 
+        public const string EmailErrorMessage = "Invalid email format";
+
         public const string DateErrorMessage = "Invalid date";
 
         public const int SpecialDescriptionMinLength = 10;
@@ -30,7 +32,7 @@
 
         public const int ReviewTextMinLength = 5;
 
-        public const int ReviewTextMaxLength = 200;
+        public const int ReviewTextMaxLength = 500;
 
         public const int ReviewRatingMinValue = 1;
 

@@ -1,4 +1,4 @@
-﻿namespace Autoshop.Web.Services
+﻿namespace Autoshop.Services
 {
     using System.Threading.Tasks;
 

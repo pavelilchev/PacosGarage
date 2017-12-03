@@ -1,5 +1,6 @@
 namespace Autoshop.Web.Services
 {
+    using Autoshop.Services;
     using System.Text.Encodings.Web;
     using System.Threading.Tasks;
 

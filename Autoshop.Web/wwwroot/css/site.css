@@ -13,6 +13,11 @@
     src: url(../fonts/Georgia.ttf) format('truetype');
 }
 
+@font-face {
+    font-family: 'Lato';
+    src: url(../fonts/Lato-Regular.ttf) format('truetype');
+}
+
 .coupon-section {
     position: relative;
     margin: 0 auto;
@@ -20,31 +25,31 @@
     background-color: #312f2f;
 }
 
-.coupon-section .module-couponslist {
-    margin-bottom: 0;
-}
-
-.coupon-section .module-couponslist .coupon {
-    padding: 0;
-    margin: 0;
-    border: none;
-    border-radius: 0;
-}
-
-    .coupon-section .module-couponslist .title {
-        float: left;
-        margin-bottom: 22px;
-        margin-top: 40px;
-        font: 200 3em/1em "oswald",Arial,sans-serif;
-        color: #e5e5e5;
-        text-transform: uppercase;
-        width: 83.33333333%;
+    .coupon-section .module-couponslist {
+        margin-bottom: 0;
     }
 
-        .coupon-section .module-couponslist .title b, .coupon-section .module-couponslist .title strong {
-            margin-left: 10px;
-            text-transform: uppercase;
+        .coupon-section .module-couponslist .coupon {
+            padding: 0;
+            margin: 0;
+            border: none;
+            border-radius: 0;
         }
+
+        .coupon-section .module-couponslist .title {
+            float: left;
+            margin-bottom: 22px;
+            margin-top: 40px;
+            font: 200 3em/1em "oswald",Arial,sans-serif;
+            color: #e5e5e5;
+            text-transform: uppercase;
+            width: 83.33333333%;
+        }
+
+            .coupon-section .module-couponslist .title b, .coupon-section .module-couponslist .title strong {
+                margin-left: 10px;
+                text-transform: uppercase;
+            }
 
 .module-couponslist .title b, .module-couponslist .title strong {
     position: relative;
@@ -148,11 +153,11 @@
     text-transform: uppercase;
 }
 
-.module-reviewsslider .author span {
-    display: block;
-    margin-bottom: 10px;
-    font: 300 .6em/1.5em 'montserrat',Verdana,sans-serif;
-}
+    .module-reviewsslider .author span {
+        display: block;
+        margin-bottom: 10px;
+        font: 300 .6em/1.5em 'montserrat',Verdana,sans-serif;
+    }
 
 .rating {
     display: inline-block;
@@ -198,11 +203,11 @@
     font-weight: bold;
 }
 
-.entry-content h2 b {
-    color: #00A1DA;
-    font: 500 1em/1em 'oswald',Verdana,sans-serif;
-    text-transform: uppercase;
-}
+    .entry-content h2 b {
+        color: #00A1DA;
+        font: 500 1em/1em 'oswald',Verdana,sans-serif;
+        text-transform: uppercase;
+    }
 
 .entry-content p, .entry-content ul, .entry-content ol, .entry-content dl, .entry-content table, .entry-content pre, .entry-content fieldset, .entry-content address, .entry-content blockquote {
     margin-bottom: 1.625em;
@@ -220,7 +225,7 @@
 
     .home-services ul li:before {
         color: #00A1DA;
-        padding-right:4px;
+        padding-right: 4px;
         content: '✓';
     }
 
@@ -270,7 +275,6 @@
     .form select {
         font-family: Georgia, "Times New Roman", Times, serif;
         background: rgba(255,255,255,.1);
-        border: none;
         border-radius: 4px;
         font-size: 16px;
         margin: 0;
@@ -322,7 +326,7 @@
 
     .form input[type="submit"],
     .form input[type="button"],
-    .form .btn{
+    .form .btn {
         position: relative;
         display: block;
         padding: 19px 39px 18px 39px;
@@ -339,6 +343,85 @@
             background: #109177;
         }
 
+.radiobutton-list .radiobutton {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.radiobutton label {
+    font-size: 1.5em;
+    margin-bottom: 0;
+}
+
+.radiobutton input {
+    margin-left: 19px;
+    margin-top: 0;
+}
+
+.review {
+    margin-bottom: 2px;
+    border: 1px solid #ecf0f1;
+    border-left: none;
+    border-right: none;
+    padding: 10px 0;
+    font: 400 1em/1.4em 'Lato',Arial,sans-serif;
+}
+
+    .review .information {
+        margin: 1em 0;
+        text-align: center;
+    }
+
+    .review .author {
+        color: #333;
+        font-size: 1.5em;
+        line-height: 2em;
+        text-align: center;
+    }
+
+    .review .date {
+        color: #636363;
+        font-size: 1.1em;
+        line-height: 2em;
+    }
+
+    .review .rating {
+        display: inline-block;
+        position: relative;
+        font-size: 0;
+        line-height: 2em;
+    }
+
+    .review .content {
+        border-left: 1px solid #ecf0f1;
+        min-height: 7em;
+    }
+
+    .review .opinion {
+        margin: 1em 0;
+        color: #636363;
+    }
+
+    .review .location {
+        color: #b5b5b5;
+        font-size: .9em;
+        text-align: right;
+    }
+
+.review-rating {
+    font-size: 1.4em;
+}
+
+    .review-rating .glyphicon-star {
+        color: #fbc310;
+    }
+
+    .review-rating .glyphicon-star-empty {
+        color: #a1a7a8;
+    }
+
+li.disabled
+
 @media (min-width: 992px) {
     .module-reviewsslider h2:before, .module-reviewsslider h2:after {
         content: '';
@@ -349,7 +432,7 @@
         vertical-align: middle;
     }
 
-    .entry-content h2:before, 
+    .entry-content h2:before,
     .entry-content h2:after {
         content: '';
         display: inline-block;

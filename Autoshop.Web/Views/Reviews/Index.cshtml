@@ -1,0 +1,75 @@
+﻿@model ReviewListingViewModel
+
+@{
+    ViewData["Title"] = "Rewiews";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row text-center">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <a asp-action="Create" class="btn">Leave a review</a>
+    </div>
+</div>
+
+<div class="reviews-list">
+    @foreach (var review in Model.Reviews)
+    {
+        <div class="row review">
+            <div class="col-xs-12 col-sm-3 col-lg-2 information">
+                <div class="author">
+                    <span>@review.Author</span>
+                </div>
+                <div class="date"><span>@review.CreatedOn.ToShortDateString()</span></div>
+                <div class="review-rating rating-@review.Rating">
+                    @for (int i = 0; i < review.Rating; i++)
+                    {
+                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                    }
+                    @for (int i = 0; i < 5 - review.Rating; i++)
+                    {
+                        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                    }                   
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-9 col-lg-10 content">
+                <div class="location">
+                    <span>Paco's Garage</span>
+                </div>
+                <div class="opinion">
+                    <p>@review.Text</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="row text-center">
+    <div class="col-xs-12">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    <a @(Model.Navigation.CurrentPage == 1 ? "disabled" : string.Empty) asp-action="Index" asp-route-page="@Model.Navigation.Previous" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                @for (int i = 1; i <= Model.Navigation.TotalPages; i++)
+                {
+                    <li><a asp-action="Index" asp-route-page="@i">@i</a></li>
+                }
+                <li>
+                    <a @(Model.Navigation.Next == Model.Navigation.CurrentPage ? "disabled" : string.Empty) asp-action="Index" asp-route-page="@Model.Navigation.Next" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<div class="row text-center">
+    <div class="col-xs-12">
+        <a asp-action="Create" class="btn">Leave a review</a>
+    </div>
+</div>

@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
     <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="~/css/slider.css"  rel="stylesheet"  type="text/css" media="screen" />
+    <link href="~/css/slider.css" rel="stylesheet" type="text/css" media="screen" />
     <script type="text/javascript" async="async" defer="defer" data-cfasync="false" src="https://mylivechat.com/chatinline.aspx?hccid=31644956"></script>
 </head>
 <body>
@@ -64,7 +64,7 @@
                     <ul class="nav navbar-nav">
                         <li is-active-route asp-controller="Home" asp-action="Index"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                         <li is-active-route asp-controller="Appointments" asp-action="Index"><a asp-area="" asp-controller="Appointments" asp-action="Index">Appointments</a></li>
-                        <li is-active-route asp-controller="Home" asp-action="About"><a asp-area="" asp-controller="" asp-action="">Services</a></li>
+                        <li is-active-route asp-controller="Reviews" asp-action="Index"><a asp-area="" asp-controller="Reviews" asp-action="Index">Reviews</a></li>
                         <li is-active-route asp-controller="Home" asp-action="About"><a asp-area="" asp-controller="" asp-action="">Blog</a></li>
                         <li is-active-route asp-controller="Home" asp-action="About"><a asp-area="" asp-controller="" asp-action="">Contact</a></li>
                         <li class="dropdown">
@@ -75,10 +75,7 @@
                             </ul>
                         </li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li is-active-route asp-controller="Account" asp-action="Register"><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
-                        <li is-active-route asp-controller="Account" asp-action="Login"><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
-                    </ul>
+                   @await Html.PartialAsync("_LoginPartial")
                 </div>
             </div>
         </nav>
@@ -86,8 +83,8 @@
 
     @RenderSection("Slideshow", required: false)
     @RenderSection("HomeCoupons", required: false)
-    @RenderSection("HomeReviews", required: false)    
-    
+    @RenderSection("HomeReviews", required: false)
+
     <div class="container">
         @RenderBody()
     </div>
