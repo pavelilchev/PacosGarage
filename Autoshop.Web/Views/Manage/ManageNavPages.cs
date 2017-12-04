@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-
-namespace Autoshop.Web.Views.Manage
+﻿namespace Autoshop.Web.Views.Manage
 {
+    using System;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.AspNetCore.Mvc.ViewFeatures;
+
     public static class ManageNavPages
     {
         public static string ActivePageKey => "ActivePage";
@@ -15,18 +12,18 @@ namespace Autoshop.Web.Views.Manage
 
         public static string ChangePassword => "ChangePassword";
 
-        public static string ExternalLogins => "ExternalLogins";
+        public static string MyReviews => "MyReviews";
 
-        public static string TwoFactorAuthentication => "TwoFactorAuthentication";
-
+        public static string MyAppointments => "MyAppointments";
+        
         public static string IndexNavClass(ViewContext viewContext) => PageNavClass(viewContext, Index);
 
         public static string ChangePasswordNavClass(ViewContext viewContext) => PageNavClass(viewContext, ChangePassword);
 
-        public static string ExternalLoginsNavClass(ViewContext viewContext) => PageNavClass(viewContext, ExternalLogins);
+        public static string MyReviewsNavClass(ViewContext viewContext) => PageNavClass(viewContext, MyReviews);
 
-        public static string TwoFactorAuthenticationNavClass(ViewContext viewContext) => PageNavClass(viewContext, TwoFactorAuthentication);
-    
+        public static string MyAppointmentsNavClass(ViewContext viewContext) => PageNavClass(viewContext, MyAppointments);
+
         public static string PageNavClass(ViewContext viewContext, string page)
         {
             var activePage = viewContext.ViewData["ActivePage"] as string;

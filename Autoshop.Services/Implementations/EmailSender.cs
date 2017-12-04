@@ -19,8 +19,8 @@
             try
             {
                 MailMessage mailMessage = new MailMessage();
-                mailMessage.From = new MailAddress(email);
-                mailMessage.To.Add(this.configuration["EmailConfiguration:Username"]);
+                mailMessage.From = new MailAddress(this.configuration["EmailConfiguration:Username"]);
+                mailMessage.To.Add(email);
                 mailMessage.ReplyToList.Add(new MailAddress(email));
                 mailMessage.Body = message;
                 mailMessage.Subject = subject;

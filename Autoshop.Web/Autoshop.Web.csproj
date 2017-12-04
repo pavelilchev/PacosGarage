@@ -24,4 +24,13 @@
     <ProjectReference Include="..\Autoshop.Services\Autoshop.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Administration\Data\" />
+    <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="Areas\Blog\Controllers\" />
+    <Folder Include="Areas\Blog\Data\" />
+    <Folder Include="Areas\Blog\Models\" />
+    <Folder Include="Areas\Blog\Views\" />
+  </ItemGroup>
+
 </Project>

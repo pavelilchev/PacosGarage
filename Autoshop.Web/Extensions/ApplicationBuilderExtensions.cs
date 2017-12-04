@@ -35,14 +35,15 @@
                         }
                     }
 
-                    var admin = await userManager.FindByEmailAsync(configuration["AdminCredentials:Email"]);
+                    var adminMail = configuration["AdminCredentials:Email"];
+                    var admin = await userManager.FindByEmailAsync(adminMail);
 
                     if (admin == null)
                     {
                         admin = new User
                         {
-                            UserName = configuration["AdminCredentials:Name"],
-                            Email = configuration["AdminCredentials:Email"],
+                            UserName = adminMail,
+                            Email = adminMail,
                             FirstName = Admin,
                             LastName = Admin
                         };
