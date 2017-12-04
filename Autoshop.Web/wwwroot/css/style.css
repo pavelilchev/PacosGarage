@@ -524,6 +524,10 @@ body {
     list-style: none;
 }
 
+.social_icons ul li a {
+   text-decoration:none;
+}
+
 .social_icons ul li a.facebook span.icon {
     background: url(../images/social_icons.png) no-repeat 0 0;
 }
@@ -558,7 +562,7 @@ body {
 
 .social_icons ul li a span.inner {
     display: inline-block;
-    padding-top: 10px;
+    padding-top: 18px;
     line-height: 18px;
     color: #949494;
     font-size: 1em;

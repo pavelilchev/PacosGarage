@@ -11,5 +11,9 @@
         public const bool ReviewsAutoPublish = true;
 
         public const double ReviewsMinRatingToPublish = 4;
+
+        public const string LatestPosts = "LatestPosts";
+
+        public const int LatestPostsCount = 2;
     }
 }

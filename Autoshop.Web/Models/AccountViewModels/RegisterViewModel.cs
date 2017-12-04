@@ -22,6 +22,9 @@
         [EmailAddress]
         public string Email { get; set; }
 
+        [RegularExpression(@"^\d{10}$", ErrorMessage = PhoneNumberErrorMessage)]
+        public string PhoneNumber { get; set; }
+
         [Required]
         [MinLength(UserPasswordMinLength, ErrorMessage = MinLengthErrorMessgae)]
         [MaxLength(UserPasswordMaxLength, ErrorMessage = MaxLengthErrorMessgae)]

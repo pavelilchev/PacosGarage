@@ -420,7 +420,19 @@
         color: #a1a7a8;
     }
 
-li.disabled
+.btn-leaveareview{
+    display:block;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.appointment-success {
+    margin-top:50px;
+    min-height:400px;
+}
 
 @media (min-width: 992px) {
     .module-reviewsslider h2:before, .module-reviewsslider h2:after {

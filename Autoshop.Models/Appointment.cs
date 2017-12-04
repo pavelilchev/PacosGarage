@@ -38,12 +38,10 @@
         public string UserId { get; set; }
 
         public User User { get; set; }
-
-        [Required]
+             
         [DataType(DataType.DateTime, ErrorMessage = DateErrorMessage)]
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; }
 
-        [Required]
-        public TimeSpan? Time { get; set; }
+        public bool IsConfirmed { get; set; } = false;
     }
 }

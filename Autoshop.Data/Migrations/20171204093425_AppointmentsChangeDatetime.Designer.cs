@@ -11,9 +11,10 @@ using System;
 namespace Autoshop.Data.Migrations
 {
     [DbContext(typeof(AutoshopDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171204093425_AppointmentsChangeDatetime")]
+    partial class AppointmentsChangeDatetime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,8 +34,6 @@ namespace Autoshop.Data.Migrations
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(50);
-
-                    b.Property<bool>("IsConfirmed");
 
                     b.Property<string>("LastName")
                         .IsRequired()

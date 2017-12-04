@@ -45,6 +45,8 @@
 
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IReviewsService, ReviewsService>();
+            services.AddTransient<IAppointmetsService, AppointmetsService>();
+            services.AddTransient<IBlogService, BlogService>();
 
             services.AddRouting(options =>
                 {

@@ -27,13 +27,15 @@
 
         [Required]
         [RegularExpression(@"^\d{10}$", ErrorMessage = PhoneNumberErrorMessage)]
-        public string Phone { get; set; }
+        public string PhoneNumber { get; set; }
 
         public string VehicleInformation { get; set; }
 
         public string Reason { get; set; }
 
         public int? SpecialId { get; set; }
+
+        public string UserId { get; set; }
 
         [Required]
         public string Date { get; set; }
@@ -45,7 +47,7 @@
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            string format = "MM/dd/yyyy hh:mm";
+            string format = "MM/dd/yyyy HH:mm";
             DateTime dateTime;
             bool isValidDate = DateTime.TryParseExact(
                 $"{this.Date} {this.Time}",

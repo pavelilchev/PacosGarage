@@ -6,12 +6,6 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<div class="row text-center">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-        <a asp-action="Create" class="btn">Leave a review</a>
-    </div>
-</div>
-
 <div class="reviews-list">
     @foreach (var review in Model.Reviews)
     {
@@ -69,7 +63,7 @@
 
 
 <div class="row text-center">
-    <div class="col-xs-12">
-        <a asp-action="Create" class="btn">Leave a review</a>
+    <div class="col-xs-12 col-md-6 col-lg-4 col-centered">
+        <a asp-action="Create" class="btn btn-leaveareview">Leave a review</a>
     </div>
 </div>
