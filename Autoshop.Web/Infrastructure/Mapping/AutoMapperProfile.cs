@@ -13,9 +13,7 @@
             CreateMap<Review, ReviewListingServiceModel>()
                 .ForMember(r => r.Author, cfg => cfg.MapFrom(a => $"{a.Author.FirstName} {a.Author.LastName.First()}."));
 
-            CreateMap<Post, LatestPostsServiceModel>()
-              .ForMember(p => p.Author, cfg => cfg.MapFrom(a => $"{a.Author.FirstName} {a.Author.LastName.First()}."))
-              .ForMember(p => p.Text, cfg => cfg.MapFrom(a => a.Text.Substring(200)));
+            CreateMap<Post, LatestPostsServiceModel>();
         }
     }
 }

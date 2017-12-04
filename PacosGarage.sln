@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autoshop.Web", "Autoshop.Web\Autoshop.Web.csproj", "{C1493A7F-1E2B-45AD-8F75-D82DB6307F95}"
 EndProject
@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autoshop.Data", "Autoshop.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autoshop.Models", "Autoshop.Models\Autoshop.Models.csproj", "{BF06F3A3-C6BA-457B-9B93-9FC6F9B72414}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autoshop.Services", "Autoshop.Services\Autoshop.Services.csproj", "{349B5EBF-BDB8-4109-BA5C-6555A026B1AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autoshop.Services", "Autoshop.Services\Autoshop.Services.csproj", "{349B5EBF-BDB8-4109-BA5C-6555A026B1AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autoshop.Common", "Autoshop.Common\Autoshop.Common.csproj", "{BD233701-27D6-48DD-9A07-A3125B27372A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autoshop.Common", "Autoshop.Common\Autoshop.Common.csproj", "{BD233701-27D6-48DD-9A07-A3125B27372A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
