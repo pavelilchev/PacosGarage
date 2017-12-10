@@ -19,6 +19,8 @@
 
         public DbSet<Special> Specials { get; set; }
 
+        public DbSet<Category> Categories { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder
@@ -32,12 +34,19 @@
                 .HasOne(p => p.Author)
                 .WithMany(u => u.Posts)
                 .HasForeignKey(p => p.AuthorId);
+            
+            builder
+                .Entity<Post>()
+                .HasOne(p => p.Category)
+                .WithMany(c => c.Posts)
+                .HasForeignKey(p => p.CategoryId);
 
             builder
                 .Entity<Review>()
                 .HasOne(r => r.Author)
                 .WithMany(u => u.Reviews)
                 .HasForeignKey(r => r.AuthorId);
+
 
             base.OnModelCreating(builder);
         }

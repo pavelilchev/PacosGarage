@@ -15,5 +15,7 @@
         public const string LatestPosts = "LatestPosts";
 
         public const int LatestPostsCount = 2;
+
+        public const int PostsPerPage = 5;
     }
 }

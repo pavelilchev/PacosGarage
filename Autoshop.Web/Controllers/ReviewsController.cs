@@ -25,7 +25,8 @@
         public async Task<IActionResult> Index(int page = 1)
         {
             var reviewsToShow = await this.reviews.All(ReviewsMinRatingToPublish, page, ReviewsPerPage);
-            return View(new ReviewListingViewModel
+
+            var model = new ReviewListingViewModel
             {
                 Reviews = reviewsToShow,
                 Navigation = new NavigationViewModel
@@ -34,7 +35,9 @@
                     PerPage = ReviewsPerPage,
                     CurrentPage = page
                 }
-            });
+            };
+
+            return View(model);
         }
 
         [Authorize]

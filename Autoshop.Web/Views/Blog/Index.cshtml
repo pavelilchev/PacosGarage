@@ -1,7 +1,59 @@
-﻿
+﻿@model BlogListingViewModel
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<div class="=row">
+    <div class="col-md-9">
+        <h2>Articles:</h2>
+        @foreach (var post in Model.Posts)
+        {
+            <div class="article-preview">
+                <h3>
+                    <a asp-action="Articles" asp-route-id="@post.Id">@post.Title</a>
+                </h3>
+                <div class="article-date">Posted on @post.CreatedOn.ToShortDateString()</div>
+                <div class="article-content">
+                    <p>
+                        @post.Text.Substring(0, 500) ...
+                        <a asp-action="Articles" asp-route-id="@post.Id" class="link link-read-more">read more</a>
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-3">
+        <h2>Categories:</h2>
+        <ul>
+            @foreach (var category in Model.Categories)
+            {
+                <li><a href="#">@category.Name</a></li>
+            }
+        </ul>
 
+    </div>
+</div>
+
+<div class="row text-center">
+    <div class="col-xs-12">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    <a @(Model.Navigation.CurrentPage == 1 ? "disabled" : string.Empty) asp-action="Index" asp-route-page="@Model.Navigation.Previous" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                @for (int i = 1; i <= Model.Navigation.TotalPages; i++)
+                {
+                    <li><a asp-action="Index" asp-route-page="@i">@i</a></li>
+                }
+                <li>
+                    <a @(Model.Navigation.Next == Model.Navigation.CurrentPage ? "disabled" : string.Empty) asp-action="Index" asp-route-page="@Model.Navigation.Next" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

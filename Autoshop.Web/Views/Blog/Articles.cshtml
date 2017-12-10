@@ -1,0 +1,19 @@
+﻿@model PostListingServiceModel
+
+@{
+    ViewData["Title"] = "Articles";
+}
+
+<div class="article-preview">
+    <h2>
+        @Model.Title
+    </h2>
+    <div class="entry-meta-data">Posted on @Model.CreatedOn.ToShortDateString()</div>
+    <div class="entry-meta-author"><i>by @Model.Author</i></div>
+    <div class="entry-content">
+        <p>
+            @Model.Text
+        </p>
+    </div>
+</div>
+

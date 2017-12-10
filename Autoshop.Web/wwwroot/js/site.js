@@ -12,8 +12,7 @@ $(document).ready(function () {
         url: "/api/blog",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function (data) {
-            console.log(JSON.stringify(data));                  
+        success: function (data) {                
             $("#posts").html('');
 
             $.each(data, function (index, p) {
@@ -23,12 +22,6 @@ $(document).ready(function () {
                        </div>`;
                 $('#posts').append(postAsHtml);
             }); 
-        },
-        failure: function (data) {
-            console.log(data);
-        },
-        error: function (data) {
-            console.log(data);
         }
     });
 });  

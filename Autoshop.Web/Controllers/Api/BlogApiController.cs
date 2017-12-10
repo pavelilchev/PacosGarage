@@ -4,7 +4,8 @@
     using Autoshop.Services.Models.Blog;
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
-    
+    using System.Threading.Tasks;
+
     [Route("api/Blog")]
     public class BlogApiController : Controller
     {
@@ -16,9 +17,9 @@
         }
 
         [HttpGet]
-        public IEnumerable<LatestPostsServiceModel> LatestPosts()
+        public async Task<IEnumerable<LatestPostsServiceModel>> LatestPosts()
         {
-            return this.blog.LatestPosts(3);
+            return await this.blog.LatestPosts(3);
         }
     }
 }
