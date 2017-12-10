@@ -71,7 +71,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin Panel<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a asp-area="Administration" asp-controller="Admin" asp-action="Index">Admin</a></li>
+                                    <li><a asp-area="Administration" asp-controller="Users" asp-action="Index">Users</a></li>
                                 </ul>
                             </li>
                         }
@@ -86,8 +86,21 @@
     @RenderSection("HomeCoupons", required: false)
     @RenderSection("HomeReviews", required: false)
 
-    <div class="container">
+    <div class="container main-content">
         @RenderBody()
+
+        @if (TempData.ContainsKey(TempDataSuccessMessageKey))
+        {
+            <div class="alert alert-success">
+                @TempData[TempDataSuccessMessageKey]
+            </div>
+        }
+        @if (TempData.ContainsKey(TempDataErrorMessageKey))
+        {
+            <div class="alert alert-danger">
+                @TempData[TempDataErrorMessageKey]
+            </div>
+        }
     </div>
 
     <div class="footer">

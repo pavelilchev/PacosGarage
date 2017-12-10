@@ -5,6 +5,17 @@
     <UserSecretsId>aspnet-Autoshop.Web-F0854097-7E02-4321-B982-4D7430BEB08E</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Areas\Administration\Data\**" />
+    <Compile Remove="Areas\Blog\**" />
+    <Content Remove="Areas\Administration\Data\**" />
+    <Content Remove="Areas\Blog\**" />
+    <EmbeddedResource Remove="Areas\Administration\Data\**" />
+    <EmbeddedResource Remove="Areas\Blog\**" />
+    <None Remove="Areas\Administration\Data\**" />
+    <None Remove="Areas\Blog\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.1" />
@@ -22,15 +33,6 @@
     <ProjectReference Include="..\Autoshop.Common\Autoshop.Common.csproj" />
     <ProjectReference Include="..\Autoshop.Data\Autoshop.Data.csproj" />
     <ProjectReference Include="..\Autoshop.Services\Autoshop.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Administration\Data\" />
-    <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Areas\Blog\Controllers\" />
-    <Folder Include="Areas\Blog\Data\" />
-    <Folder Include="Areas\Blog\Models\" />
-    <Folder Include="Areas\Blog\Views\" />
   </ItemGroup>
 
 </Project>

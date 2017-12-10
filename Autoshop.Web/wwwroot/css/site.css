@@ -18,6 +18,10 @@
     src: url(../fonts/Lato-Regular.ttf) format('truetype');
 }
 
+.main-content{
+    min-height:470px;
+}
+
 .coupon-section {
     position: relative;
     margin: 0 auto;
@@ -399,7 +403,7 @@
 
     .review .opinion {
         margin: 1em 0;
-        color: #636363;
+        color: #e6eaf2;
     }
 
     .review .location {
@@ -432,6 +436,98 @@
 .appointment-success {
     margin-top:50px;
     min-height:400px;
+}
+
+.draw.meet {
+    color: #00A1DA;
+    padding: 1em 2em;
+    display: block;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    box-sizing: border-box;
+    margin: 1em;
+    box-shadow: inset 0 0 0 2px #00A1DA;
+    color: #00A1DA;
+    font-size: inherit;
+    font-weight: 700;
+    position: relative;
+    vertical-align: middle;
+}
+
+    .draw.meet:hover {
+        color: #171717;
+        text-decoration: none;
+    }
+
+
+.draw.meet::before, .draw.meet::after{
+    box-sizing: inherit;
+    content: '';
+    position: absolute;
+}
+
+.draw {
+    transition: color 0.25s;
+}
+    .draw::before, .draw::after {
+       border: 2px solid transparent; 
+       width: 0;
+       height: 0;
+    }
+
+    .draw::before {
+        top: 0;
+        left: 0;
+    }
+
+    .draw::after {
+        bottom: 0;
+        right: 0;
+    }
+
+        .draw:hover::before,
+        .draw:hover::after {
+            width: 100%;
+            height: 100%;
+        }
+
+        .draw:hover::before {
+            border-top-color: #171717;
+            border-right-color: #171717;
+            transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
+        }
+
+        .draw:hover::after {
+            border-bottom-color: #171717;
+            border-left-color: #171717;
+            transition: border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s, height 0.25s ease-out 0.75s;
+        }
+        
+.meet:hover {
+    color: #171717;
+}
+
+.meet::after {
+    top: 0;
+    left: 0;
+}
+
+.meet:hover::before {
+    border-top-color: #171717;
+    border-right-color: #171717;
+}
+
+.meet:hover::after {
+    border-bottom-color: #171717;
+    border-left-color: #171717;
+    transition: height 0.25s ease-out, width 0.25s ease-out 0.25s;
+}
+
+.back-Link {
+    display:block;
+    margin:20px 0;
+    font-size:1.3em;
 }
 
 @media (min-width: 992px) {

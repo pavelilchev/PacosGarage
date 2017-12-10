@@ -1,0 +1,28 @@
+﻿@model UserDetailsViewModel
+@{
+    ViewData["Title"] = $"{Model.FirstName} {Model.LastName} Details";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <p>@Model.Email</p>
+    <p>Roles: @string.Join(", ", Model.UserRoles)</p>
+
+    <form asp-action="AddToRole" method="post">
+        <div class="row">
+            <div class="col-md-3">
+                <input type="hidden" name="UserId" value="@Model.Id" />
+                <select name="Role" asp-items="Model.Roles" class="form-control"></select>
+                <div asp-validation-summary="All"></div>
+            </div>
+            <div class="col-md-3">
+                <input class="btn-sm btn-primary" type="submit" value="Add To Role" />
+            </div>
+        </div>
+    </form>
+
+    <p>
+        <a class="back-Link" asp-action="Users">Back</a>
+    </p>
+</div>
