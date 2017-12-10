@@ -44,7 +44,7 @@
 
         public const int PostTextMinLength = 50;
 
-        public const int PostTextMaxLength = 5000;
+        public const int PostTextMaxLength = 50000;
 
         public const int CategoryMinLength = 2;
 

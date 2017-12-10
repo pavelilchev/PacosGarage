@@ -15,5 +15,9 @@
         Task<int> TotalCount();
 
         Task<IEnumerable<CategoryListingServiceModel>> Categories();
+
+        Task<bool> CategoryExist(int? categoryId);
+
+        Task<int> AddArticle(string title, string text, int? categoryId, string authorId);
     }
 }

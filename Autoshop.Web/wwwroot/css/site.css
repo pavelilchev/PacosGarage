@@ -248,6 +248,10 @@
     font-family: Georgia;
 }
 
+    .form.form-big {
+        max-width: 100%;
+    }
+
     .form.appointments {
         max-width: 100%;
     }
@@ -446,7 +450,7 @@
     background: none;
     border: 0;
     box-sizing: border-box;
-    margin: 1em;
+    margin: 1em 0;
     box-shadow: inset 0 0 0 2px #00A1DA;
     color: #00A1DA;
     font-size: inherit;

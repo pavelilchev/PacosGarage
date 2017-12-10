@@ -8,6 +8,7 @@
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
     using Autoshop.Models;
+    using System;
 
     public class BlogService : IBlogService
     {
@@ -60,6 +61,37 @@
                 .Categories
                 .ProjectTo<CategoryListingServiceModel>()
                 .ToListAsync();
+        }
+
+        public async Task<bool> CategoryExist(int? categoryId)
+        {
+            if (categoryId != null)
+            {
+                var category = await this.db.Categories.FindAsync(categoryId);
+                if (category == null)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public async Task<int> AddArticle(string title, string text, int? categoryId, string authorId)
+        {
+            var post = new Post
+            {
+                Title = title,
+                Text = text,
+                AuthorId = authorId,
+                CategoryId = categoryId,
+                CreatedOn = DateTime.UtcNow
+            };
+
+            await this.db.Posts.AddAsync(post);
+            await this.db.SaveChangesAsync();
+
+            return post.Id;
         }
     }
 }

@@ -3,8 +3,16 @@
 @{
     ViewData["Title"] = "Index";
 }
+@if (User.IsInRole(Writer) || User.IsInRole(Admin))
+{
+    <div class="=row">
+        <div class="col-md-3">
+            <a asp-action="Add" class="btn back-Link">Add New Article</a>
+        </div>
+    </div>
+}
 
-<div class="=row">
+<div class="row">
     <div class="col-md-9">
         <h2>Articles:</h2>
         @foreach (var post in Model.Posts)
@@ -16,7 +24,7 @@
                 <div class="article-date">Posted on @post.CreatedOn.ToShortDateString()</div>
                 <div class="article-content">
                     <p>
-                        @post.Text.Substring(0, 500) ...
+                        @Html.Raw(post.Text)...
                         <a asp-action="Articles" asp-route-id="@post.Id" class="link link-read-more">read more</a>
                     </p>
                 </div>
@@ -28,7 +36,7 @@
         <ul>
             @foreach (var category in Model.Categories)
             {
-                <li><a href="#">@category.Name</a></li>
+                <li><a href="#" class="draw meet">@category.Name</a></li>
             }
         </ul>
 

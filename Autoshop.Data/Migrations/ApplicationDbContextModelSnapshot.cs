@@ -88,11 +88,11 @@ namespace Autoshop.Data.Migrations
 
                     b.Property<string>("Text")
                         .IsRequired()
-                        .HasMaxLength(5000);
+                        .HasMaxLength(50000);
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(5000);
+                        .HasMaxLength(50);
 
                     b.HasKey("Id");
 

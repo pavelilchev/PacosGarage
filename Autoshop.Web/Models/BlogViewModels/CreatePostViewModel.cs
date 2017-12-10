@@ -1,14 +1,13 @@
-﻿namespace Autoshop.Models
+﻿namespace Autoshop.Web.Models.BlogViewModels
 {
-    using System;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using static Autoshop.Common.ValidationConstants;
 
-    public class Post
+    public class CreatePostViewModel
     {
-        public int Id { get; set; }
-
         [Required]
         [MinLength(PostTitleMinLength, ErrorMessage = MinLengthErrorMessgae)]
         [MaxLength(PostTitleMaxLength, ErrorMessage = MaxLengthErrorMessgae)]
@@ -17,17 +16,11 @@
         [Required]
         [MinLength(PostTextMinLength, ErrorMessage = MinLengthErrorMessgae)]
         [MaxLength(PostTextMaxLength, ErrorMessage = MaxLengthErrorMessgae)]
-        public string Text { get; set; }
-
-        public DateTime CreatedOn { get; set; }
-
-        [Required]
-        public string AuthorId { get; set; }
-
-        public User Author { get; set; }
+        public string Text { get; set; }        
+        
 
         public int? CategoryId { get; set; }
 
-        public Category Category { get; set; }
+        public IEnumerable<SelectListItem> Categories { get; set; }
     }
 }
