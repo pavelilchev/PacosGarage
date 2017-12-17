@@ -11,5 +11,7 @@
         Task<int> TotalCount(double minRatingToShow);
 
         Task<bool> Add(double rating, string text, string userId);
+
+        Task<IEnumerable<ReviewListingServiceModel>> ByUser(string id);
     }
 }

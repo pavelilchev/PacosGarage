@@ -16,11 +16,12 @@
     [Route("[controller]/[action]")]
     public class ManageController : Controller
     {
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
-        private readonly IEmailSender _emailSender;
-        private readonly ILogger _logger;
-        private readonly UrlEncoder _urlEncoder;
+        private readonly UserManager<User> userManager;
+        private readonly SignInManager<User> signInManager;
+        private readonly IEmailSender emailSender;
+        private readonly ILogger logger;
+        private readonly UrlEncoder urlEncoder;
+        private readonly IReviewsService reviews;
 
         private const string AuthenicatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
 
@@ -29,13 +30,15 @@
           SignInManager<User> signInManager,
           IEmailSender emailSender,
           ILogger<ManageController> logger,
-          UrlEncoder urlEncoder)
+          UrlEncoder urlEncoder,
+          IReviewsService reviews)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _emailSender = emailSender;
-            _logger = logger;
-            _urlEncoder = urlEncoder;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
+            this.emailSender = emailSender;
+            this.logger = logger;
+            this.urlEncoder = urlEncoder;
+            this.reviews = reviews;
         }
 
         [TempData]
@@ -44,10 +47,10 @@
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var user = await _userManager.GetUserAsync(User);
+            var user = await userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
             }
 
             var model = new IndexViewModel
@@ -70,16 +73,16 @@
                 return View(model);
             }
 
-            var user = await _userManager.GetUserAsync(User);
+            var user = await userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
             }
 
             var email = user.Email;
             if (model.Email != email)
             {
-                var setEmailResult = await _userManager.SetEmailAsync(user, model.Email);
+                var setEmailResult = await userManager.SetEmailAsync(user, model.Email);
                 if (!setEmailResult.Succeeded)
                 {
                     throw new ApplicationException($"Unexpected error occurred setting email for user with ID '{user.Id}'.");
@@ -89,7 +92,7 @@
             var phoneNumber = user.PhoneNumber;
             if (model.PhoneNumber != phoneNumber)
             {
-                var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, model.PhoneNumber);
+                var setPhoneResult = await userManager.SetPhoneNumberAsync(user, model.PhoneNumber);
                 if (!setPhoneResult.Succeeded)
                 {
                     throw new ApplicationException($"Unexpected error occurred setting phone number for user with ID '{user.Id}'.");
@@ -110,7 +113,7 @@
 
             if (firstNameChanged || lastNameChanged)
             {
-                var setNamesResult = await _userManager.UpdateAsync(user);
+                var setNamesResult = await userManager.UpdateAsync(user);
                 if (!setNamesResult.Succeeded)
                 {
                     throw new ApplicationException($"Unexpected error occurred setting First and/or Last Name for user with ID '{user.Id}'.");
@@ -124,10 +127,10 @@
         [HttpGet]
         public async Task<IActionResult> ChangePassword()
         {
-            var user = await _userManager.GetUserAsync(User);
+            var user = await userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
             }
 
             var model = new ChangePasswordViewModel { StatusMessage = StatusMessage };
@@ -142,21 +145,21 @@
                 return View(model);
             }
 
-            var user = await _userManager.GetUserAsync(User);
+            var user = await userManager.GetUserAsync(User);
             if (user == null)
             {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                throw new ApplicationException($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
             }
 
-            var changePasswordResult = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+            var changePasswordResult = await userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
             if (!changePasswordResult.Succeeded)
             {
                 AddErrors(changePasswordResult);
                 return View(model);
             }
 
-            await _signInManager.SignInAsync(user, isPersistent: false);
-            _logger.LogInformation("User changed their password successfully.");
+            await signInManager.SignInAsync(user, isPersistent: false);
+            logger.LogInformation("User changed their password successfully.");
             StatusMessage = "Your password has been changed.";
 
             return RedirectToAction(nameof(ChangePassword));
@@ -164,8 +167,11 @@
 
         [HttpGet]
         public async Task<IActionResult> MyReviews()
-        {          
-            return View();
+        {
+            var id = this.userManager.GetUserId(User);
+            var myReviews = await this.reviews.ByUser(id);
+
+            return View(myReviews);
         }
 
         [HttpGet]
@@ -204,8 +210,8 @@
         {
             return string.Format(
                 AuthenicatorUriFormat,
-                _urlEncoder.Encode("Autoshop.Web"),
-                _urlEncoder.Encode(email),
+                urlEncoder.Encode("Autoshop.Web"),
+                urlEncoder.Encode(email),
                 unformattedKey);
         }
 

@@ -53,6 +53,16 @@
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<ReviewListingServiceModel>> ByUser(string id)
+        {
+            return await this.db
+                .Reviews
+                .Where(r => r.AuthorId == id)
+                .OrderByDescending(r => r.CreatedOn)
+                .ProjectTo<ReviewListingServiceModel>()
+                .ToListAsync();
+        }
+
         public async Task<int> TotalCount(double minRatingToShow)
         {
             return await this.db

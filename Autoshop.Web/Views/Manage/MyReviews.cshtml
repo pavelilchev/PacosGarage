@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<ReviewListingServiceModel>
 @{
     ViewData["Title"] = "My Reviews";
     ViewData.AddActivePage(ManageNavPages.MyReviews);
@@ -6,3 +6,34 @@
 
 <h2>@ViewData["Title"]</h2>
 
+<div class="reviews-list">
+    @foreach (var review in Model)
+    {
+        <div class="row review">
+            <div class="col-xs-12 col-sm-4 col-lg-3 information">
+                <div class="author">
+                    <span>@review.Author</span>
+                </div>
+                <div class="date"><span>@review.CreatedOn.ToShortDateString()</span></div>
+                <div class="review-rating rating-@review.Rating">
+                    @for (int i = 0; i < review.Rating; i++)
+                    {
+                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                    }
+                    @for (int i = 0; i < 5 - review.Rating; i++)
+                    {
+                        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                    }
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-lg-9 content">
+                <div class="location">
+                    <span>Paco's Garage</span>
+                </div>
+                <div class="opinion">
+                    <p>@review.Text</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
