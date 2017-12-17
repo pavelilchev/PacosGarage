@@ -57,7 +57,7 @@
                 </li>
                 @for (int i = 1; i <= Model.Navigation.TotalPages; i++)
                 {
-                    <li><a asp-action="Index" asp-route-page="@i">@i</a></li>
+                    <li><a asp-action="Articles" asp-route-page="@i">@i</a></li>
                 }
                 <li>
                     <a @(Model.Navigation.Next == Model.Navigation.CurrentPage ? "disabled" : string.Empty) asp-action="Index" asp-route-page="@Model.Navigation.Next" aria-label="Next">

@@ -42,7 +42,7 @@
 
         public const int PostTitleMinLength = 5;
 
-        public const int PostTitleMaxLength = 50;
+        public const int PostTitleMaxLength = 100;
 
         public const int PostTextMinLength = 50;
 

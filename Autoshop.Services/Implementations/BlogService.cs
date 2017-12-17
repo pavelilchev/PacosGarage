@@ -64,6 +64,7 @@
             var categ = this.db.Categories.ToList();
             return await this.db
                 .Categories
+                .OrderBy(c => c.Name)
                 .ProjectTo<CategoryListingServiceModel>()
                 .ToListAsync();
         }
