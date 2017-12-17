@@ -65,13 +65,14 @@
                         <li is-active-route asp-controller="Home" asp-action="Index"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                         <li is-active-route asp-controller="Appointments" asp-action="Index"><a asp-area="" asp-controller="Appointments" asp-action="Index">Appointments</a></li>
                         <li is-active-route asp-controller="Reviews" asp-action="Index"><a asp-area="" asp-controller="Reviews" asp-action="Index">Reviews</a></li>
-                        <li is-active-route asp-controller="Blog" asp-action="Index"><a asp-area="" asp-controller="Blog" asp-action="Index">Blog</a></li>
+                        <li is-active-route asp-controller="Blog" asp-action="Articles"><a asp-area="" asp-controller="Blog" asp-action="Articles">Blog</a></li>
                         @if (User.IsInRole(Admin))
                         {
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin Panel<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a asp-area="Administration" asp-controller="Users" asp-action="Index">Users</a></li>
+                                    <li><a asp-area="Administration" asp-controller="Users" asp-action="Users">Users</a></li>
+                                    <li><a asp-area="Administration" asp-controller="Appointments" asp-action="Index">Appointments</a></li>
                                 </ul>
                             </li>
                         }
@@ -142,7 +143,7 @@
                             <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                             <li><a asp-area="" asp-controller="Appointments" asp-action="Index">Appointments</a></li>
                             <li><a asp-area="" asp-controller="Reviews" asp-action="Index">Reviews</a></li>
-                            <li><a asp-area="" asp-controller="Blog" asp-action="Index">Blog</a></li>
+                            <li><a asp-area="" asp-controller="Blog" asp-action="Articles">Blog</a></li>
                         </ul>
                     </div>
 

@@ -23,6 +23,7 @@
                 mailMessage.To.Add(email);
                 mailMessage.ReplyToList.Add(new MailAddress(email));
                 mailMessage.Body = message;
+                mailMessage.IsBodyHtml = true;
                 mailMessage.Subject = subject;
 
                 using (SmtpClient client = new SmtpClient(

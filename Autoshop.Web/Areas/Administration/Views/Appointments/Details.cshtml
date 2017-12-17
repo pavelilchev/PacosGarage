@@ -1,0 +1,26 @@
+﻿@model AppointmentDetailsServiceMosel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<p>Name: @Model.FirstName @Model.LastName"</p>
+<p>Email: @Model.Email</p>
+<p>Phone: @Model.Phone</p>
+<p>Vehicle: @Model.VehicleInformation</p>
+<p>Reason: @Model.Reason</p>
+<p>Date: @Model.Date.ToShortDateString()</p>
+@if (Model.IsConfirmed)
+{
+    <p>Status: Confirmed</p>
+}
+else
+{
+    <a asp-action="Confirm" asp-route-id="@Model.Id" class="btn">Confirm Appointment</a>
+}
+
+<p>
+    <a class="back-Link" asp-action="Index">Back</a>
+</p>

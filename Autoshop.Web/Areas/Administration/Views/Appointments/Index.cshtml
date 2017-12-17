@@ -1,0 +1,45 @@
+﻿@model AppointmentsListingViewModel
+
+@{
+    ViewData["Title"] = "Appointments";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Filter" method="post">
+    <div class="radiobutton-list">
+        <label class="title">Select Appointment status</label>
+        @foreach (AppointmentStatus status in Enum.GetValues(typeof(AppointmentStatus)))
+        {
+            <label>
+                <input asp-for="AppointmentStatus" type="radio" value="@status" />@status
+            </label>
+        }
+
+        <button type="submit">Filter</button>
+    </div>
+</form>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Confirmed</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var app in Model.Appointments)
+        {
+            <tr>
+                <td>@app.FirstName</td>
+                <td>@app.LastName</td>
+                <td>@app.Phone</td>
+                <td>@app.IsConfirmed</td>
+                <td><a asp-action="Details" asp-route-id="@app.Id">Details</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

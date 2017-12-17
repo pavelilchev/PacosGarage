@@ -18,8 +18,16 @@
     src: url(../fonts/Lato-Regular.ttf) format('truetype');
 }
 
-.main-content{
-    min-height:470px;
+.main-content {
+    min-height: 470px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.mr-50 {
+    margin-right: 50px;
 }
 
 .coupon-section {
@@ -428,8 +436,8 @@
         color: #a1a7a8;
     }
 
-.btn-leaveareview{
-    display:block;
+.btn-leaveareview {
+    display: block;
 }
 
 .col-centered {
@@ -438,8 +446,8 @@
 }
 
 .appointment-success {
-    margin-top:50px;
-    min-height:400px;
+    margin-top: 50px;
+    min-height: 400px;
 }
 
 .draw.meet {
@@ -465,19 +473,20 @@
     }
 
 
-.draw.meet::before, .draw.meet::after{
-    box-sizing: inherit;
-    content: '';
-    position: absolute;
-}
+    .draw.meet::before, .draw.meet::after {
+        box-sizing: inherit;
+        content: '';
+        position: absolute;
+    }
 
 .draw {
     transition: color 0.25s;
 }
+
     .draw::before, .draw::after {
-       border: 2px solid transparent; 
-       width: 0;
-       height: 0;
+        border: 2px solid transparent;
+        width: 0;
+        height: 0;
     }
 
     .draw::before {
@@ -490,24 +499,24 @@
         right: 0;
     }
 
-        .draw:hover::before,
-        .draw:hover::after {
-            width: 100%;
-            height: 100%;
-        }
+    .draw:hover::before,
+    .draw:hover::after {
+        width: 100%;
+        height: 100%;
+    }
 
-        .draw:hover::before {
-            border-top-color: #171717;
-            border-right-color: #171717;
-            transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
-        }
+    .draw:hover::before {
+        border-top-color: #171717;
+        border-right-color: #171717;
+        transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
+    }
 
-        .draw:hover::after {
-            border-bottom-color: #171717;
-            border-left-color: #171717;
-            transition: border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s, height 0.25s ease-out 0.75s;
-        }
-        
+    .draw:hover::after {
+        border-bottom-color: #171717;
+        border-left-color: #171717;
+        transition: border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s, height 0.25s ease-out 0.75s;
+    }
+
 .meet:hover {
     color: #171717;
 }
@@ -529,10 +538,24 @@
 }
 
 .back-Link {
-    display:block;
-    margin:20px 0;
-    font-size:1.3em;
+    display: block;
+    margin: 20px 0;
+    font-size: 1.3em;
 }
+
+.radiobutton-list {
+    margin: 20px 0;
+}
+
+    .radiobutton-list .title {
+        display: block;
+        font-weight: 700;
+        font-size: 1.3em;
+    }
+
+    .radiobutton-list label {
+       margin-right:10px;
+    }
 
 @media (min-width: 992px) {
     .module-reviewsslider h2:before, .module-reviewsslider h2:after {

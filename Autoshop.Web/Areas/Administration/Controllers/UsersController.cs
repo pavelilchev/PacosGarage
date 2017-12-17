@@ -25,11 +25,6 @@
             this.roleManager = roleManager;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         public IActionResult Users()
         {
             var users = userManager

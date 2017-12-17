@@ -1,6 +1,8 @@
 ﻿namespace Autoshop.Services
 {
+    using Autoshop.Services.Models.Appointments;
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public interface IAppointmetsService
@@ -15,5 +17,11 @@
             DateTime date,
             int? specialId,
             string userId);
+
+        Task<IEnumerable<AppointmentListingServiceModel>> All(AppointmentStatus status);
+
+        Task<AppointmentDetailsServiceMosel> Find(int id);
+
+        Task<bool> Confirm(int id);
     }
 }

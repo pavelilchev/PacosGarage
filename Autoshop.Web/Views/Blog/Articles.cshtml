@@ -1,19 +1,67 @@
-﻿@model PostListingServiceModel
+﻿@model BlogListingViewModel
 
 @{
-    ViewData["Title"] = "Articles";
+    ViewData["Title"] = "Index";
+}
+@if (User.IsInRole(Writer) || User.IsInRole(Admin))
+{
+    <div class="=row">
+        <div class="col-md-3">
+            <a asp-action="Add" class="btn back-Link">Add New Article</a>
+        </div>
+    </div>
 }
 
-<div class="article-preview">
-    <h2>
-        @Html.Raw(Model.Title)
-    </h2>
-    <div class="entry-meta-data">Posted on @Model.CreatedOn.ToShortDateString()</div>
-    <div class="entry-meta-author"><i>by @Model.Author</i></div>
-    <div class="entry-content">
-        <p>
-           @Html.Raw(Model.Text)
-        </p>
+<div class="row">
+    <div class="col-md-9">
+        <h2>Articles:</h2>
+        @foreach (var post in Model.Posts)
+        {
+            <div class="article-preview">
+                <h3>
+                    <a asp-action="Articles" asp-route-id="@post.Id">@post.Title</a>
+                </h3>
+                <div class="article-date mb-10"><i>Posted on @post.CreatedOn.ToShortDateString()</i></div>
+                <div class="article-content">
+                    <p class="mr-50">
+                        @Html.Raw(post.Text)...
+                        <a asp-action="Articles" asp-route-id="@post.Id" class="link link-read-more">read more</a>
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-3">
+        <h2>Categories:</h2>
+        <ul>
+            @foreach (var category in Model.Categories)
+            {
+                <li><a asp-action="Articles" asp-route-categoryName="@category.Name" class="draw meet">@category.Name</a></li>
+            }
+        </ul>
+
     </div>
 </div>
 
+<div class="row text-center">
+    <div class="col-xs-12">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    <a @(Model.Navigation.CurrentPage == 1 ? "disabled" : string.Empty) asp-action="Index" asp-route-page="@Model.Navigation.Previous" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                @for (int i = 1; i <= Model.Navigation.TotalPages; i++)
+                {
+                    <li><a asp-action="Index" asp-route-page="@i">@i</a></li>
+                }
+                <li>
+                    <a @(Model.Navigation.Next == Model.Navigation.CurrentPage ? "disabled" : string.Empty) asp-action="Index" asp-route-page="@Model.Navigation.Next" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

@@ -8,7 +8,7 @@
     {
         Task<IEnumerable<LatestPostsServiceModel>> LatestPosts(int count);
 
-        Task<IEnumerable<PostListingServiceModel>> All(int page, int perPage);
+        Task<IEnumerable<PostListingServiceModel>> All(int page, int perPage, string categoryName);
 
         Task<PostListingServiceModel> GetById(int id);
 

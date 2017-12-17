@@ -6,7 +6,6 @@
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
     using System.Linq;
-    using static Autoshop.Common.Constants.CommonConstants;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using System.Collections.Generic;
     using Microsoft.AspNetCore.Authorization;
@@ -14,6 +13,8 @@
     using Microsoft.AspNetCore.Identity;
     using Autoshop.Web.Infrastructure.Extensions;
     using System;
+    
+    using static Autoshop.Common.Constants.CommonConstants;
 
     public class BlogController : Controller
     {
@@ -26,9 +27,9 @@
             this.userManager = userManager;
         }
 
-        public async Task<IActionResult> Index(int page = 1)
+        public async Task<IActionResult> Articles(int page = 1, string categoryName = "")
         {
-            var posts = await this.blog.All(page, PostsPerPage);
+            var posts = await this.blog.All(page, PostsPerPage, categoryName);
             var categories = await this.blog.Categories();
 
             foreach (var post in posts)
@@ -52,7 +53,7 @@
             return View(model);
         }
 
-        public async Task<IActionResult> Articles(int id)
+        public async Task<IActionResult> Article(int id)
         {
             var model = await this.blog.GetById(id);
 
@@ -88,7 +89,7 @@
 
                 var postId = await this.blog.AddArticle(model.Title, model.Text, model.CategoryId, userId);
 
-                return RedirectToAction(nameof(Articles), new { id = postId });
+                return RedirectToAction(nameof(Article), new { id = postId });
             }
 
             model.Categories = await GetCategoriesToListItems();

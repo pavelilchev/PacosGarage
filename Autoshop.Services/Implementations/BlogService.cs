@@ -19,10 +19,15 @@
             this.db = db;
         }
 
-        public async Task<IEnumerable<PostListingServiceModel>> All(int page, int perPage)
+        public async Task<IEnumerable<PostListingServiceModel>> All(int page, int perPage, string categoryName)
         {
-            return await this.db
-                .Posts
+            var posts = this.db.Posts.AsQueryable();
+            if (!string.IsNullOrEmpty(categoryName))
+            {
+                posts = posts.Where(p => p.Category.Name == categoryName);
+            }
+
+           return await posts
                 .OrderByDescending(p => p.CreatedOn)
                 .Skip(page - 1)
                 .Take(perPage)
