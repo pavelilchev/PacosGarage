@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-4">
                         <div class="logo">
-                            <a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/logo.png" alt="" /></a>
+                            <a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/logo.png" alt="Logo" /></a>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-4">
@@ -104,6 +104,7 @@
             </div>
         }
     </div>
+    @RenderSection("GoogleMap", required: false)
 
     <div class="footer">
         <div class="wrap">
@@ -120,18 +121,13 @@
                         <div class="social_icons">
                             <ul>
                                 <li>
-                                    <a href="https://www.facebook.com/pavel.ilchev" class="facebook">
+                                    <a href="https://www.facebook.com/pavel.ilchev" class="facebook" target="_blank">
                                         <span class="icon"> &nbsp;</span> <span class="inner"><strong>Facebook</strong></span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://twitter.com/PacosGarage" class="twitter">
+                                    <a href="https://twitter.com/PacosGarage" class="twitter" target="_blank">
                                         <span class="icon"> &nbsp;</span> <span class="inner"><strong>Twitter</strong></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://plus.google.com/u/2/102737260430634775032" class="rss">
-                                        <span class="icon"> &nbsp;</span> <span class="inner"><strong>Google</strong> </span>
                                     </a>
                                 </li>
                             </ul>
@@ -151,8 +147,7 @@
                     <div class="col-sm-3 span_1_of_4">
                         <h3>Location</h3>
                         <ul>
-                            <li>Evlogi Georgiev 4</li>
-                            <li>Varna</li>
+                            <li>Evlogi Georgiev 4, Varna</li>
                             <li>Bulgaria</li>
                             <li><span>Telephone:</span> +359 886 808 571</li>
                             <li><span>E-mail:</span> webmail.paco.garage@gmail.com</li>
@@ -191,7 +186,7 @@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 
-    <script src="~/js/jquery.nivo.slider.js"  async="async" defer="defer"></script>
+    <script src="~/js/jquery.nivo.slider.js" async="async" defer="defer"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

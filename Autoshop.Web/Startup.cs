@@ -50,6 +50,8 @@
             services.AddTransient<IBlogService, BlogService>();
             services.AddTransient<ISpecialsService, SpecialsService>();
 
+            services.AddMemoryCache();
+
             services.AddRouting(options =>
                 {
                     options.LowercaseUrls = true;

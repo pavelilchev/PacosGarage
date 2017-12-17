@@ -126,8 +126,18 @@
                 <li>Oil Change</li>
             </ul>
         </div>
-       <div class="text-center">
-           <a class="btn" href="javascript:void(0)" title="Services">View All Services</a>
-       </div>
+        <div class="text-center">
+            <a class="btn" href="javascript:void(0)" title="Services">View All Services</a>
+        </div>
     </div>
 </div>
+
+@section GoogleMap
+{
+    <div id="map" class="google-map">My map will go here</div>
+}
+
+@section Scripts
+{
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWvRMVlLW9IZqHQxV9wrJV5L0mGWtanp8&callback=myMap"></script>
+}

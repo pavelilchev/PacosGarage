@@ -24,4 +24,37 @@ $(document).ready(function () {
             });
         }
     });
-});  
+});
+
+function myMap() {
+    var myLatLng = { lat: 43.223020, lng: 27.927074 };
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 16,
+        center: myLatLng,
+        scrollwheel: false
+    });
+
+    var contentString = `<div class="info-window">
+                            <img src="/images/logo.png" alt="Paco's Logo" width="150px" />
+                            <p>
+                            Address: Petar Raichev 4, Varna<br>
+                            Phone: 0886 808 571<br>
+                            Email: webmail.paco.garage@gmail.com
+                            </p>
+                         </div>`;
+
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: "Paco's Garage"
+    });
+
+    marker.addListener('click', function () {
+        infowindow.open(map, marker);
+    });
+}

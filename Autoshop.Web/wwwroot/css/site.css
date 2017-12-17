@@ -594,6 +594,11 @@
     background: darkred;
 }
 
+.google-map{
+    width:100%;
+    height:500px;
+}
+
 @media(max-width:768px){
     .wrap .logo {
         float: none;
