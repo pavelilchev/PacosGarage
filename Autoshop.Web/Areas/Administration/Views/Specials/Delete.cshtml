@@ -1,0 +1,32 @@
+﻿@model SpecialListingServiceModel
+@{
+    ViewData["Title"] = "Delete Special";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="form">
+    <form method="post" asp-action="ConfirmDelete" asp-route-id="@Model.Id">
+        <div class="form-group">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" class="form-control" disabled />
+        </div>
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" class="form-control" disabled rows="10"></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="DaysValid"></label>
+            <input asp-for="DaysValid" class="form-control" disabled />
+        </div>
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+</div>
+<p>
+    <a class="back-Link" asp-action="Details" asp-route-id="@Model.Id">Back</a>
+</p>
+
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

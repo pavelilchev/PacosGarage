@@ -14,6 +14,7 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Net.Http.Headers;
     using static Autoshop.Common.ValidationConstants;
 
     public class Startup
@@ -47,6 +48,7 @@
             services.AddTransient<IReviewsService, ReviewsService>();
             services.AddTransient<IAppointmetsService, AppointmetsService>();
             services.AddTransient<IBlogService, BlogService>();
+            services.AddTransient<ISpecialsService, SpecialsService>();
 
             services.AddRouting(options =>
                 {
@@ -74,7 +76,15 @@
                 app.UseExceptionHandler("/home/error");
             }
 
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = ctx =>
+                {
+                    const int durationInSeconds = 60 * 60 * 24 * 30;
+                    ctx.Context.Response.Headers[HeaderNames.CacheControl] =
+                        "public,max-age=" + durationInSeconds;
+                }
+            });
 
             app.UseAuthentication();
 

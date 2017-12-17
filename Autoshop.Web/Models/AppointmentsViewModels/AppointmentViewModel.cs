@@ -1,5 +1,7 @@
 ﻿namespace Autoshop.Web.Models.AppointmentsViewModels
 {
+    using Autoshop.Services.Models.Specials;
+    using Microsoft.AspNetCore.Mvc.Rendering;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -34,6 +36,10 @@
         public string Reason { get; set; }
 
         public int? SpecialId { get; set; }
+
+        public SpecialListingServiceModel Special { get; set; }
+
+        public List<SelectListItem> Specials { get; set; }
 
         public string UserId { get; set; }
 

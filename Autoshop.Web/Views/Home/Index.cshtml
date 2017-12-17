@@ -28,7 +28,7 @@
                                         <div class="title"><b>FREE</b> 2nd Opinion! </div>
                                         <div itemprop="description" class="content"> Find out what really needs to be done. Keep it local. Keep it honest. Bring in your quote and we will confirm that listed repairs are needed.... FREE<br> Family owned and operated. </div>
                                         <div class="actions">
-                                            <a title="Redeem Now" href="https://www.fairfaxautorepair.com/appointments?coupon=7" class="btn btn-redeem"> Redeem Now </a>
+                                            <a title="Redeem Now" asp-controller="Appointments" asp-action="Index" asp-route-specialId="1" class="btn btn-redeem"> Redeem Now </a>
                                         </div>
                                     </div>
                                 </div>
@@ -71,8 +71,8 @@
                 <p>We follow the maintenance booklet of your vehicle. Exceptions and modifications are always available for different driving characteristics. Fairfax Auto Repair prides itself on honesty and integrity in a field that at times, is perceived gray. In a client satisfaction based industry, it becomes very difficult to please everyone. While we have a strong return rate from our clients, there will always be room for improvement, and some will not return. Repairs can and do at times, become sour, not only for the client but the repair facility as well.</p>
                 <p>If mistakes are made, we will strive to correct the situation in a calm and respecting fashion. We will do our best to provide the highest level of repair and faith for your vehicle. We employ only trained certified technicians. Our facility will meet the highest standards in vehicle repair, competency, reliability, cleanliness, competitive pricing, and overall experience. Feel free to contact us and experience the difference yourself.</p>
                 <br>
-                <a class="btn read-more column column-3 column-2-push" href="/about-us" title="Read More">READ MORE</a>
-                <a class="btn apmnt column column-5" href="/appointments" title="Schedule an Appointment">SCHEDULE AN APPOINTMENT</a>
+                <a class="btn read-more column column-3 column-2-push" href="javascript:void(0)" title="Read More">READ MORE</a>
+                <a class="btn apmnt column column-5" asp-action="Index" asp-controller="Appointments" title="Schedule an Appointment">SCHEDULE AN APPOINTMENT</a>
             </div>
         </div>
     </div>
@@ -82,7 +82,7 @@
     <h2>SOME OF OUR<span> SERVICES</span></h2>
     <p class="text-center">We're here to serve you and all your vehicle maintenance and car repair needs.</p>
     <div class="row">
-        <div class="col-xs-3">
+        <div class="col-xs-6 col-sm-3">
             <ul>
                 <li>Air Conditioning</li>
                 <li>Battery</li>
@@ -93,7 +93,7 @@
                 <li>Overhauls</li>
             </ul>
         </div>
-        <div class="col-xs-3">
+        <div class="col-xs-6 col-sm-3">
             <ul>
                 <li>Mufflers</li>
                 <li>Rear End</li>
@@ -104,7 +104,7 @@
                 <li>Alignments</li>
             </ul>
         </div>
-        <div class="col-xs-3">
+        <div class="col-xs-6 col-sm-3">
             <ul>
                 <li>Cooling System</li>
                 <li>Electrical</li>
@@ -115,7 +115,7 @@
                 <li>Systems</li>
             </ul>
         </div>
-        <div class="col-xs-3">
+        <div class="col-xs-6 col-sm-3">
             <ul>
                 <li>Timing Belts</li>
                 <li>Axles</li>
@@ -127,7 +127,7 @@
             </ul>
         </div>
        <div class="text-center">
-           <a class="btn" href="/services" title="Services">View All Services</a>
+           <a class="btn" href="javascript:void(0)" title="Services">View All Services</a>
        </div>
     </div>
 </div>

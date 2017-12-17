@@ -1,0 +1,34 @@
+﻿@model IEnumerable<SpecialListingServiceModel>
+
+@{
+    ViewData["Title"] = "Specials";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create" class="btn">Add new Special</a>
+</p>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Expired</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var special in Model)
+        {
+            <tr>
+                <td>@special.Title</td>
+                <td>@special.Description</td>
+                <td>@special.CreatedOn.AddDays(special.DaysValid).ToShortDateString()</td>
+                <td><a asp-action="Details" asp-route-id="@special.Id">Details</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+

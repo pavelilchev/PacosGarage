@@ -1,0 +1,34 @@
+﻿@model SpecialFormViewModel
+@{
+    ViewData["Title"] = "Edit Special";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="form">
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" class="form-control" rows="10"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DaysValid"></label>
+            <input asp-for="DaysValid" class="form-control" />
+            <span asp-validation-for="DaysValid" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn">Save special</button>
+    </form>
+</div>
+<p>
+    <a class="back-Link" asp-action="Details" asp-route-id="@ViewContext.RouteData.Values["id"]">Back</a>
+</p>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

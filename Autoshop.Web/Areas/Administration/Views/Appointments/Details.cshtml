@@ -11,6 +11,10 @@
 <p>Phone: @Model.Phone</p>
 <p>Vehicle: @Model.VehicleInformation</p>
 <p>Reason: @Model.Reason</p>
+@if (!string.IsNullOrEmpty(Model.SpecialTitle))
+{
+    <p>Special: @Model.SpecialTitle</p>
+}
 <p>Date: @Model.Date.ToShortDateString()</p>
 @if (Model.IsConfirmed)
 {

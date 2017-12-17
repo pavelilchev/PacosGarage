@@ -1,14 +1,11 @@
-﻿namespace Autoshop.Models
+﻿namespace Autoshop.Web.Areas.Administration.Models.Specials
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
 
     using static Autoshop.Common.ValidationConstants;
 
-    public class Special
+    public class SpecialFormViewModel
     {
-        public int Id { get; set; }
-
         [Required]
         public string Title { get; set; }
 
@@ -17,9 +14,8 @@
         [MaxLength(SpecialDescriptionMaxLength, ErrorMessage = MaxLengthErrorMessgae)]
         public string Description { get; set; }
 
-        public DateTime CreatedOn { get; set; }
-
-        [Range(0, int.MaxValue)]
+        [Display(Name = "Days Valid")]
+        [Range(0, int.MaxValue, ErrorMessage = RangeErrorMessage)]
         public int DaysValid { get; set; }
     }
 }

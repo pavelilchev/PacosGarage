@@ -2,6 +2,8 @@
 {
     public static class ValidationConstants
     {
+        public const string RangeErrorMessage = "Value for {0} must be between {1} and {2}.";
+
         public const string MinLengthErrorMessgae = "{0} should be at least {1} characters long";
 
         public const string MaxLengthErrorMessgae = "{0} can't be more than {1} characters long";

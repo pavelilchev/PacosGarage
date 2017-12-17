@@ -415,7 +415,7 @@
 
     .review .opinion {
         margin: 1em 0;
-        color: #e6eaf2;
+        color: #636363;
     }
 
     .review .location {
@@ -575,5 +575,52 @@
         margin: 0 20px 26px;
         background-color: rgba(92,92,92,.33);
         vertical-align: sub;
+    }
+}
+
+.footer_grides ul {
+    text-align: left;
+}
+
+.footer_grides li {
+    margin-bottom:10px;
+}
+
+.btn.btn-danger{
+    background:red;
+}
+
+.btn.btn-danger:hover {
+    background: darkred;
+}
+
+@media(max-width:768px){
+    .wrap .logo {
+        float: none;
+        margin: 0 auto;
+    }
+
+    .wrap .dail {
+        float: none;
+        text-align:center;
+        margin: 0 auto;
+    }
+
+    .coupon-section .module-couponslist .content {
+        width: 100%;
+    }
+
+    .coupon-section .module-couponslist .actions {
+        display: block;
+        width: 100%;
+    }
+
+    .coupon-section .module-couponslist .btn-redeem {
+        margin: 30px 0;
+    }
+
+    .footer_grides div, .footer_grides ul, .footer_grides ul li{
+        text-align: center;
+        margin: 0 auto;
     }
 }
