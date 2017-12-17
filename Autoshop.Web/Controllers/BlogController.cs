@@ -77,8 +77,6 @@
         {
             if (ModelState.IsValid)
             {
-                // Add sanitarize logic
-                // var text = text.Sanitarize();
                 var userId = userManager.GetUserId(User);
 
                 var categoryExist = await this.blog.CategoryExist(model.CategoryId);
@@ -97,6 +95,25 @@
             return View(model);
         }
 
+        [Authorize(Roles = Writer + "," + Admin)]
+        public IActionResult AddCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = Writer + "," + Admin)]
+        public async Task<IActionResult> AddCategory(CreateCategoryViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            await this.blog.AddCategory(model.Name);
+
+            return RedirectToAction(nameof(Articles));
+        }
         private async Task<IEnumerable<SelectListItem>> GetCategoriesToListItems()
         {
             var categories = await blog.Categories();

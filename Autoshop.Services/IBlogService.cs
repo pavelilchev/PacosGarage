@@ -19,5 +19,7 @@
         Task<bool> CategoryExist(int? categoryId);
 
         Task<int> AddArticle(string title, string text, int? categoryId, string authorId);
+
+        Task<bool> AddCategory(string name);
     }
 }

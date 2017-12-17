@@ -66,6 +66,15 @@
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<AppointmentListingServiceModel>> ByUser(string id)
+        {
+            return await this.db.Appointments
+                .Where(a => a.UserId == id)
+                .OrderByDescending(a => a.Id)
+                .ProjectTo<AppointmentListingServiceModel>()
+                .ToListAsync();
+        }
+
         public async Task<bool> Confirm(int id)
         {
             var appointment = await this.db.Appointments.FindAsync(id);

@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<AppointmentListingServiceModel>
 @{
     ViewData["Title"] = "My Appointments";
     ViewData.AddActivePage(ManageNavPages.MyAppointments);
@@ -6,3 +6,28 @@
 
 <h2>@ViewData["Title"]</h2>
 
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Vehicle Info</th>
+            <th>Reason</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var app in Model)
+        {
+        <tr>
+            <td>@app.FirstName</td>
+            <td>@app.LastName</td>
+            <td>@app.Phone</td>
+            <td>@app.VehicleInformation</td>
+            <td>@app.Reason</td>
+            <td>@app.Date.ToShortDateString()</td>
+        </tr>
+        }
+    </tbody>
+</table>

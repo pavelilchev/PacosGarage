@@ -23,5 +23,7 @@
         Task<AppointmentDetailsServiceMosel> Find(int id);
 
         Task<bool> Confirm(int id);
+
+        Task<IEnumerable<AppointmentListingServiceModel>> ByUser(string id);
     }
 }

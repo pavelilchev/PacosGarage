@@ -22,6 +22,7 @@
         private readonly ILogger logger;
         private readonly UrlEncoder urlEncoder;
         private readonly IReviewsService reviews;
+        private readonly IAppointmetsService appointments;
 
         private const string AuthenicatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
 
@@ -31,7 +32,8 @@
           IEmailSender emailSender,
           ILogger<ManageController> logger,
           UrlEncoder urlEncoder,
-          IReviewsService reviews)
+          IReviewsService reviews,
+          IAppointmetsService appointments)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -39,6 +41,7 @@
             this.logger = logger;
             this.urlEncoder = urlEncoder;
             this.reviews = reviews;
+            this.appointments = appointments;
         }
 
         [TempData]
@@ -165,7 +168,6 @@
             return RedirectToAction(nameof(ChangePassword));
         }
 
-        [HttpGet]
         public async Task<IActionResult> MyReviews()
         {
             var id = this.userManager.GetUserId(User);
@@ -174,11 +176,14 @@
             return View(myReviews);
         }
 
-        [HttpGet]
         public async Task<IActionResult> MyAppointments()
         {
-            return View();
+            var id = this.userManager.GetUserId(User);
+            var myAppointments = await this.appointments.ByUser(id);
+
+            return View(myAppointments);
         }
+
         #region Helpers
 
         private void AddErrors(IdentityResult result)

@@ -98,5 +98,19 @@
 
             return post.Id;
         }
+
+        public async Task<bool> AddCategory(string name)
+        {
+            var category = new Category
+            {
+                Name = name
+            };
+
+            await this.db.Categories.AddAsync(category);
+
+            await this.db.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

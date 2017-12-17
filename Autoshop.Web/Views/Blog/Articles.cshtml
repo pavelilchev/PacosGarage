@@ -5,11 +5,14 @@
 }
 @if (User.IsInRole(Writer) || User.IsInRole(Admin))
 {
-    <div class="=row">
-        <div class="col-md-3">
-            <a asp-action="Add" class="btn back-Link">Add New Article</a>
-        </div>
+<div class="row">
+    <div class="col-md-3">
+        <a asp-action="Add" class="btn back-Link">Add New Article</a>
     </div>
+    <div class="col-md-3">
+        <a asp-action="AddCategory" class="btn back-Link">Add Category</a>
+    </div>
+</div>
 }
 
 <div class="row">
@@ -19,13 +22,13 @@
         {
             <div class="article-preview">
                 <h3>
-                    <a asp-action="Articles" asp-route-id="@post.Id">@post.Title</a>
+                    <a asp-action="Article" asp-route-id="@post.Id">@post.Title</a>
                 </h3>
                 <div class="article-date mb-10"><i>Posted on @post.CreatedOn.ToShortDateString()</i></div>
                 <div class="article-content">
                     <p class="mr-50">
                         @Html.Raw(post.Text)...
-                        <a asp-action="Articles" asp-route-id="@post.Id" class="link link-read-more">read more</a>
+                        <a asp-action="Article" asp-route-id="@post.Id" class="link link-read-more">read more</a>
                     </p>
                 </div>
             </div>
