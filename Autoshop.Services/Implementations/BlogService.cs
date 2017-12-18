@@ -29,7 +29,7 @@
 
            return await posts
                 .OrderByDescending(p => p.CreatedOn)
-                .Skip(page - 1)
+                .Skip((page - 1) * perPage)
                 .Take(perPage)
                 .ProjectTo<PostListingServiceModel>()
                 .ToListAsync();

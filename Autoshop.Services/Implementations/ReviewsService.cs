@@ -47,7 +47,7 @@
                 .Reviews
                 .Where(r => r.IsPublished && r.Rating >= minRating)
                 .OrderByDescending(r => r.CreatedOn)
-                .Skip(page - 1)
+                .Skip((page - 1) * reviewsPerPage)
                 .Take(reviewsPerPage)
                 .ProjectTo<ReviewListingServiceModel>()
                 .ToListAsync();

@@ -29,6 +29,7 @@
         {
             var users = userManager
                 .Users
+                .OrderBy(u => u.Id)
                 .ProjectTo<UserListingViewModel>()
                 .ToList();
 
@@ -45,14 +46,14 @@
 
             var userRoles = await userManager.GetRolesAsync(user);
 
-            var roles = await this.roleManager
+            var roles = this.roleManager
             .Roles
             .Select(r => new SelectListItem
             {
                 Text = r.Name,
                 Value = r.Name
             })
-            .ToListAsync();
+            .ToList();
 
             return View(new UserDetailsViewModel
             {
@@ -74,7 +75,7 @@
 
             if (!roleExists || !userExists || !ModelState.IsValid)
             {
-                TempData.AddErrorMessage($"Invalid identity details.");
+                TempData.AddErrorMessage("Invalid identity details.");
 
                 return RedirectToAction(nameof(UserDetails), "Users", new { area = Administration, id = model.UserId });
             }
