@@ -77,7 +77,10 @@
                         </div>
                     </div>
                 </div>
-
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div asp-validation-summary="All" class="alert alert-danger"></div>
+                }
                 <button type="submit" class="btn">Submit</button>
             </form>
         </div>

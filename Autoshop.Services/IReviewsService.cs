@@ -13,5 +13,7 @@
         Task<bool> Add(double rating, string text, string userId);
 
         Task<IEnumerable<ReviewListingServiceModel>> ByUser(string id);
+
+        Task<ReviewsStettingsServiceModel> AllWithSettings();
     }
 }

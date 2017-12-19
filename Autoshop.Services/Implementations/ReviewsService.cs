@@ -5,30 +5,35 @@
     using Autoshop.Models;
     using Autoshop.Services.Models.Reviews;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using static Autoshop.Common.Constants.CommonConstants;
 
     public class ReviewsService : IReviewsService
     {
         private readonly AutoshopDbContext db;
+        private readonly IConfiguration configuration;
 
-        public ReviewsService(AutoshopDbContext db)
+        public ReviewsService(AutoshopDbContext db, IConfiguration configuration)
         {
             this.db = db;
+            this.configuration = configuration;
         }
 
         public async Task<bool> Add(double rating, string text, string userId)
         {
+            var autoPublish = bool.Parse(this.configuration["WebSiteSettings:Reviews:AutoPublish"]);
+            var reviewsMinRatingToPublish = double.Parse(this.configuration["WebSiteSettings:Reviews:ReviewsMinRatingToPublish"]);
+
             var review = new Review
             {
                 Rating = rating,
                 Text = text,
                 AuthorId = userId,
                 CreatedOn = DateTime.UtcNow,
-                IsPublished = ReviewsAutoPublish && rating >= ReviewsMinRatingToPublish
+                IsPublished = autoPublish && rating >= reviewsMinRatingToPublish
             };
 
             await this.db.Reviews.AddAsync(review);
@@ -69,6 +74,23 @@
                 .Reviews
                 .Where(r => r.IsPublished && r.Rating >= minRatingToShow)
                 .CountAsync();
+        }
+
+        public async Task<ReviewsStettingsServiceModel> AllWithSettings()
+        {
+            var autoPublish = bool.Parse(this.configuration["WebSiteSettings:Reviews:AutoPublish"]);
+            var reviewsMinRatingToPublish = double.Parse(this.configuration["WebSiteSettings:Reviews:ReviewsMinRatingToPublish"]);
+
+           var reviews = await this.db.Reviews
+                .ProjectTo<ReviewDetailsServiceModel>()
+                .ToListAsync();
+           
+            return new ReviewsStettingsServiceModel
+            {
+                AutoPublish = autoPublish,
+                MinRatingAutoPublish = reviewsMinRatingToPublish,
+                Reviews = reviews
+            };
         }
     }
 }
