@@ -5,6 +5,8 @@
     using Autoshop.Services.Implementations;
     using FluentAssertions;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Moq;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -38,7 +40,7 @@
             db.Reviews.AddRange(this.reviews);
             db.Users.AddRange(this.users);
             db.SaveChanges();
-            var reviewService = new ReviewsService(db);
+            var reviewService = new ReviewsService(db, null);
 
             var allReviews = await reviewService.All(1, 1, 10);
 
@@ -57,7 +59,7 @@
             db.Reviews.AddRange(this.reviews);
             db.Users.AddRange(this.users);
             db.SaveChanges();
-            var reviewService = new ReviewsService(db);
+            var reviewService = new ReviewsService(db, null);
 
             var allReviews = await reviewService.All(1, 1, 1);
 
@@ -77,7 +79,12 @@
         public async Task AddShouldAddCorrectDataAndReturnTrue()
         {
             var db = this.GetDatabase();
-            var reviewService = new ReviewsService(db);
+            var config = new Mock<IConfiguration>();
+            config.Setup(c => c["WebSiteSettings:Reviews:AutoPublish"])
+                .Returns("true");
+            config.Setup(c => c["WebSiteSettings:Reviews:ReviewsMinRatingToPublish"])
+              .Returns("4");
+            var reviewService = new ReviewsService(db, config.Object);
             double rating = 5;
             string text = "Review";
             string userId = "1";
@@ -98,7 +105,7 @@
             db.Reviews.AddRange(this.reviews);
             db.Users.AddRange(this.users);
             db.SaveChanges();
-            var reviewService = new ReviewsService(db);
+            var reviewService = new ReviewsService(db, null);
 
             var user = this.users.First();
             var allReviews = await reviewService.ByUser(user.Id);
@@ -117,7 +124,7 @@
             var db = this.GetDatabase();
             db.Reviews.AddRange(this.reviews);
             db.SaveChanges();
-            var reviewService = new ReviewsService(db);
+            var reviewService = new ReviewsService(db, null);
 
             var allReviews = await reviewService.TotalCount(4);
 

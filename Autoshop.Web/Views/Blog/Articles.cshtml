@@ -5,14 +5,14 @@
 }
 @if (User.IsInRole(Writer) || User.IsInRole(Admin))
 {
-<div class="row">
-    <div class="col-md-3">
-        <a asp-action="Add" class="btn back-Link">Add New Article</a>
+    <div class="row">
+        <div class="col-md-3">
+            <a asp-action="Add" class="btn back-Link">Add New Article</a>
+        </div>
+        <div class="col-md-3">
+            <a asp-action="AddCategory" class="btn back-Link">Add Category</a>
+        </div>
     </div>
-    <div class="col-md-3">
-        <a asp-action="AddCategory" class="btn back-Link">Add Category</a>
-    </div>
-</div>
 }
 
 <div class="row">
@@ -50,17 +50,17 @@
     <div class="col-xs-12">
         <nav aria-label="Page navigation">
             <ul class="pagination">
-                <li>
-                    <a @(Model.Navigation.CurrentPage == 1 ? "disabled" : string.Empty) asp-action="Index" asp-route-page="@Model.Navigation.Previous" aria-label="Previous">
+                <li class="@(Model.Navigation.CurrentPage == 1 ? "disabled" : string.Empty)">
+                    <a asp-action="Articles" asp-route-page="@Model.Navigation.Previous" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
                 @for (int i = 1; i <= Model.Navigation.TotalPages; i++)
                 {
-                    <li><a asp-action="Articles" asp-route-page="@i">@i</a></li>
+                    <li><a asp-action="Articles" asp-route-page="@i" class="@(Model.Navigation.CurrentPage == i ? "active" : "")">@i</a></li>
                 }
-                <li>
-                    <a @(Model.Navigation.Next == Model.Navigation.CurrentPage ? "disabled" : string.Empty) asp-action="Index" asp-route-page="@Model.Navigation.Next" aria-label="Next">
+                <li class="@(Model.Navigation.Next == Model.Navigation.CurrentPage ? "disabled" : string.Empty)">
+                    <a asp-action="Articles" asp-route-page="@Model.Navigation.Next" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
